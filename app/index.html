@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <title>Asset Management</title>
+    <style>
+        :root {
+            --sapBrandColor: #4db1ff;
+            --sapTextColor: #fafafa;
+            --sapTileBackground: #2b313a;
+            --sapBackgroundColor: #12171c;
+            --sapBorderColor: #3a4552;
+            --sapLinkColor: #4db1ff;
+            --sapHoverBackground: #3a4552;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: "72", "72full", Arial, Helvetica, sans-serif;
+            background-color: var(--sapBackgroundColor);
+            color: var(--sapTextColor);
+            padding: 2rem;
+        }
+
+        h1 {
+            font-size: 1.5rem;
+            font-weight: normal;
+            margin-bottom: 1.5rem;
+            color: var(--sapTextColor);
+        }
+
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 1rem;
+        }
+
+        .service-card {
+            background-color: var(--sapTileBackground);
+            border: 1px solid var(--sapBorderColor);
+            border-radius: 4px;
+            padding: 1rem;
+            box-shadow: 0 1px 2px rgba(0, 0, 0, 0.3);
+        }
+
+        .service-card h2 {
+            font-size: 1.1rem;
+            font-weight: 600;
+            margin-bottom: 0.75rem;
+            color: var(--sapBrandColor);
+            border-bottom: 1px solid var(--sapBorderColor);
+            padding-bottom: 0.5rem;
+        }
+
+        .service-card ul {
+            list-style: none;
+        }
+
+        .service-card li {
+            margin-bottom: 0.5rem;
+        }
+
+        .service-card a {
+            display: block;
+            padding: 0.5rem 0.75rem;
+            text-decoration: none;
+            color: var(--sapLinkColor);
+            border-radius: 3px;
+            transition: background-color 0.2s;
+        }
+
+        .service-card a:hover {
+            background-color: var(--sapHoverBackground);
+        }
+
+        /* Адаптивность для мобильных */
+        @media (max-width: 900px) {
+            .services-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+
+        @media (max-width: 600px) {
+            .services-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <h1>Asset Management</h1>
+    <div class="services-grid">
+        <!-- Admin Service -->
+        <div class="service-card">
+            <h2>Admin Service</h2>
+            <ul>
+                <li><a href="/$fiori-preview/AdminService/Assets#preview-app">Assets</a></li>
+                <li><a href="/$fiori-preview/AdminService/Employees#preview-app">Employees</a></li>
+                <li><a href="/$fiori-preview/AdminService/RepairRequests#preview-app">Repair Requests</a></li>
+                <li><a href="/$fiori-preview/AdminService/RepairLogs#preview-app">Repair Logs</a></li>
+                <li><a href="/$fiori-preview/AdminService/TechnicianStatistics#preview-app">Technician Statistics</a></li>
+            </ul>
+        </div>
+
+        <!-- Inventory Service -->
+        <div class="service-card">
+            <h2>Inventory Service</h2>
+            <ul>
+                <li><a href="/$fiori-preview/InventoryService/Assets#preview-app">Assets</a></li>
+                <li><a href="/$fiori-preview/InventoryService/AssetCategories#preview-app">Asset Categories</a></li>
+                <li><a href="/$fiori-preview/InventoryService/Employees#preview-app">Employees</a></li>
+            </ul>
+        </div>
+
+        <!-- Repair Service -->
+        <div class="service-card">
+            <h2>Repair Service</h2>
+            <ul>
+                <li><a href="/$fiori-preview/RepairService/RepairRequests#preview-app">Repair Requests</a></li>
+                <li><a href="/$fiori-preview/RepairService/RepairLogs#preview-app">Repair Logs</a></li>
+                <li><a href="/$fiori-preview/RepairService/Employees#preview-app">Employees</a></li>
+                <li><a href="/$fiori-preview/RepairService/Assets#preview-app">Assets</a></li>
+            </ul>
+        </div>
+
+        <!-- Employee Service -->
+        <div class="service-card">
+            <h2>Employee Service</h2>
+            <ul>
+                <li><a href="/$fiori-preview/EmployeeService/MyAssets#preview-app">My Assets</a></li>
+                <li><a href="/$fiori-preview/EmployeeService/MyRepairRequests#preview-app">My Repair Requests</a></li>
+            </ul>
+        </div>
+    </div>
+</body>
+</html>
