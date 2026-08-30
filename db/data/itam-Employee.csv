@@ -1,0 +1,10 @@
+ID;employeeNumber;firstName;lastName;email;department
+1a1a1a1a-0000-0000-0000-000000000001;E1001;Alice;Johnson;alice@company.com;Sales
+1a1a1a1a-0000-0000-0000-000000000002;E1002;Bob;Smith;bob@company.com;Finance
+1a1a1a1a-0000-0000-0000-000000000003;E1003;Carla;Nowak;carla@company.com;IT Support
+1a1a1a1a-0000-0000-0000-000000000004;E1004;David;Kim;david@company.com;Marketing
+1a1a1a1a-0000-0000-0000-000000000005;E1005;Emma;Garcia;emma@company.com;Human Resources
+1a1a1a1a-0000-0000-0000-000000000006;E1006;Frank;Muller;frank@company.com;Engineering
+1a1a1a1a-0000-0000-0000-000000000007;E1007;Grace;Chen;grace@company.com;Legal
+1a1a1a1a-0000-0000-0000-000000000008;E1008;Henry;Novak;henry@company.com;Operations
+1a1a1a1a-0000-0000-0000-000000000009;E1009;Irene;Fischer;irene@company.com;Engineering

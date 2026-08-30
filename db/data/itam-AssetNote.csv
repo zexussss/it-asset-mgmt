@@ -1,0 +1,7 @@
+ID;asset_ID;content;authorID;createdAt
+6f6f6f6f-0000-0000-0000-000000000001;2b2b2b2b-0000-0000-0000-000000000002;Recurring power issues reported twice in the last 6 months, consider replacement if it fails again.;carla;2026-08-10T09:20:00Z
+6f6f6f6f-0000-0000-0000-000000000002;2b2b2b2b-0000-0000-0000-000000000006;Decommissioned due to end-of-life, battery no longer holds charge.;carla;2022-01-02T10:00:00Z
+6f6f6f6f-0000-0000-0000-000000000003;2b2b2b2b-0000-0000-0000-000000000007;Reported lost during a business trip, police report filed, insurance claim in progress.;david;2023-02-15T08:00:00Z
+6f6f6f6f-0000-0000-0000-000000000004;2b2b2b2b-0000-0000-0000-000000000016;Paper feed mechanism jammed, waiting for spare part from vendor.;carla;2026-08-16T10:05:00Z
+6f6f6f6f-0000-0000-0000-000000000005;2b2b2b2b-0000-0000-0000-000000000021;Firmware update scheduled for the next maintenance window.;carla;2026-08-01T12:00:00Z
+6f6f6f6f-0000-0000-0000-000000000006;2b2b2b2b-0000-0000-0000-000000000001;Issued as a replacement for a previous device with a screen defect.;admin;2024-03-01T09:00:00Z
