@@ -15,6 +15,9 @@
     "deploy": "cds deploy"
   },
   "cds": {
+    "fiori": {
+      "preview": true
+    },
     "requires": {
       "db": {
         "kind": "sql"
