@@ -1,5 +1,22 @@
 {
-  "scopes": [],
+  "scopes": [
+    {
+      "name": "$XSAPPNAME.Admin",
+      "description": "Admin"
+    },
+    {
+      "name": "$XSAPPNAME.Employee",
+      "description": "Employee"
+    },
+    {
+      "name": "$XSAPPNAME.AssetManager",
+      "description": "AssetManager"
+    },
+    {
+      "name": "$XSAPPNAME.RepairTechnician",
+      "description": "RepairTechnician"
+    }
+  ],
   "attributes": [],
   "role-templates": [],
   "authorities-inheritance": false

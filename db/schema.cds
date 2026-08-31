@@ -26,7 +26,7 @@ entity Priority {
 }
 
 entity RepairRequestStatus {
-  key code        : String(10);
+  key code        : String(15);
       name        : String(50);
       criticality : Integer default 0;
 }
