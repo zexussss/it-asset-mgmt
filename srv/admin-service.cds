@@ -7,6 +7,7 @@ service AdminService @(path: '/admin') {
     @odata.draft.enabled
     entity Assets                    as projection on db.Asset;
 
+    @odata.draft.enabled
     entity Employees                 as projection on db.Employee;
 
     @cds.redirection.target

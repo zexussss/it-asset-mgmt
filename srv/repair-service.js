@@ -1,8 +1,11 @@
 const cds = require('@sap/cds');
+const registerEnsureEmployee = require('./lib/ensure-employee');
 
 module.exports = cds.service.impl(async function () {
     const { SELECT, UPDATE, INSERT } = cds.ql;
     const { RepairRequests, RepairLogs, Assets } = this.entities;
+
+    registerEnsureEmployee(this);
 
     this.on('startRepair', 'RepairRequests', async (req) => {
         const { ID } = req.params[0];

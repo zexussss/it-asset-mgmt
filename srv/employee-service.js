@@ -1,8 +1,11 @@
 const cds = require('@sap/cds');
+const registerEnsureEmployee = require('./lib/ensure-employee');
 
 module.exports = cds.service.impl(async function () {
     const { SELECT, INSERT } = cds.ql;
     const { MyAssets, MyRepairRequests } = this.entities;
+
+    registerEnsureEmployee(this);
 
     this.before('READ', 'MyAssets', (req) => {
         req.query.where([{ ref: ['assignedTo', 'email'] }, '=', { val: req.user.id }]);
