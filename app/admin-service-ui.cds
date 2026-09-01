@@ -362,6 +362,8 @@ annotate AdminService.RepairRequests with @(
 );
 
 annotate AdminService.RepairRequests with {
+    status         @readonly;
+    resolutionDays @readonly;
     status   @Common.ValueList: {
         CollectionPath: 'RepairRequestStatuses',
         Parameters    : [

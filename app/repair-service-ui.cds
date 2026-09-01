@@ -129,6 +129,7 @@ annotate RepairService.RepairRequests with @(
 );
 
 annotate RepairService.RepairRequests with {
+    status @readonly;
     status   @Common.ValueList: {
         CollectionPath: 'RepairRequestStatuses',
         Parameters    : [

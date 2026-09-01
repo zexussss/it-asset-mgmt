@@ -81,6 +81,10 @@ annotate EmployeeService.MyRepairRequests with @(
     ]}
 );
 
+annotate EmployeeService.MyRepairRequests with {
+    status @readonly;
+};
+
 annotate EmployeeService.MyAssets with @(
     UI.SelectionFields    : [
         category_code,
