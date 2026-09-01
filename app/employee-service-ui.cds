@@ -48,17 +48,36 @@ annotate EmployeeService.MyRepairRequests with @(
         Target: '@UI.FieldGroup#General'
     }],
     UI.FieldGroup #General     : {Data: [
-        {Value: assetInventoryNumber},
-        {Value: assetName},
-        {Value: description},
-        {Value: priority_code},
+        {
+            Value: assetInventoryNumber,
+            Label: 'Asset'
+        },
+        {
+            Value: assetName,
+            Label: 'Asset Name'
+        },
+        {
+            Value: description,
+            Label: 'Description'
+        },
+        {
+            Value: priority_code,
+            Label: 'Priority'
+        },
         {
             Value                    : status_code,
             Criticality              : status.criticality,
-            CriticalityRepresentation: #WithIcon
+            CriticalityRepresentation: #WithIcon,
+            Label                    : 'Status'
         },
-        {Value: createdDate},
-        {Value: resolvedDate}
+        {
+            Value: createdDate,
+            Label: 'Created Date'
+        },
+        {
+            Value: resolvedDate,
+            Label: 'Resolved Date'
+        }
     ]}
 );
 
@@ -102,9 +121,18 @@ annotate EmployeeService.MyAssets with @(
         Target: '@UI.FieldGroup#General'
     }],
     UI.FieldGroup #General: {Data: [
-        {Value: inventoryNumber},
-        {Value: name},
-        {Value: categoryName},
+        {
+            Value: inventoryNumber,
+            Label: 'Inventory Number'
+        },
+        {
+            Value: name,
+            Label: 'Name'
+        },
+        {
+            Value: categoryName,
+            Label: 'Category'
+        },
         {
             Value                    : availabilityStatusName,
             Criticality              : availabilityStatus.criticality,
@@ -117,10 +145,25 @@ annotate EmployeeService.MyAssets with @(
             CriticalityRepresentation: #WithIcon,
             Label                    : 'Repair Status'
         },
-        {Value: serialNumber},
-        {Value: manufacturer},
-        {Value: model},
-        {Value: purchaseDate},
-        {Value: warrantyEndDate}
+        {
+            Value: serialNumber,
+            Label: 'Serial Number'
+        },
+        {
+            Value: manufacturer,
+            Label: 'Manufacturer'
+        },
+        {
+            Value: model,
+            Label: 'Model'
+        },
+        {
+            Value: purchaseDate,
+            Label: 'Purchase Date'
+        },
+        {
+            Value: warrantyEndDate,
+            Label: 'Warranty End Date'
+        }
     ]}
 );

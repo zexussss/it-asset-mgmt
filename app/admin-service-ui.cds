@@ -84,9 +84,18 @@ annotate AdminService.Assets with @(
         }
     ],
     UI.FieldGroup #General     : {Data: [
-        {Value: inventoryNumber},
-        {Value: name},
-        {Value: category_code},
+        {
+            Value: inventoryNumber,
+            Label: 'Inventory Number'
+        },
+        {
+            Value: name,
+            Label: 'Name'
+        },
+        {
+            Value: category_code,
+            Label: 'Category'
+        },
         {
             Value                    : availabilityStatus_code,
             Criticality              : availabilityStatus.criticality,
@@ -99,12 +108,30 @@ annotate AdminService.Assets with @(
             CriticalityRepresentation: #WithIcon,
             Label                    : 'Repair Status'
         },
-        {Value: serialNumber},
-        {Value: manufacturer},
-        {Value: model},
-        {Value: purchaseDate},
-        {Value: warrantyEndDate},
-        {Value: price},
+        {
+            Value: serialNumber,
+            Label: 'Serial Number'
+        },
+        {
+            Value: manufacturer,
+            Label: 'Manufacturer'
+        },
+        {
+            Value: model,
+            Label: 'Model'
+        },
+        {
+            Value: purchaseDate,
+            Label: 'Purchase Date'
+        },
+        {
+            Value: warrantyEndDate,
+            Label: 'Warranty End Date'
+        },
+        {
+            Value: price,
+            Label: 'Price'
+        },
         {
             $Type : 'UI.DataFieldWithNavigationPath',
             Value : assignedTo.lastName,
@@ -201,11 +228,26 @@ annotate AdminService.Employees with @(
         }
     ],
     UI.FieldGroup #General: {Data: [
-        {Value: employeeNumber},
-        {Value: firstName},
-        {Value: lastName},
-        {Value: email},
-        {Value: department}
+        {
+            Value: employeeNumber,
+            Label: 'Employee Number'
+        },
+        {
+            Value: firstName,
+            Label: 'First Name'
+        },
+        {
+            Value: lastName,
+            Label: 'Last Name'
+        },
+        {
+            Value: email,
+            Label: 'Email'
+        },
+        {
+            Value: department,
+            Label: 'Department'
+        }
     ]}
 );
 
@@ -286,17 +328,36 @@ annotate AdminService.RepairRequests with @(
             Label : 'Asset Owner',
             Target: 'asset/assignedTo'
         },
-        {Value: requestedBy_ID},
-        {Value: description},
-        {Value: priority_code},
+        {
+            Value: requestedBy_ID,
+            Label: 'Requested By'
+        },
+        {
+            Value: description,
+            Label: 'Description'
+        },
+        {
+            Value: priority_code,
+            Label: 'Priority'
+        },
         {
             Value                    : status_code,
             Criticality              : status.criticality,
-            CriticalityRepresentation: #WithIcon
+            CriticalityRepresentation: #WithIcon,
+            Label                    : 'Status'
         },
-        {Value: technician},
-        {Value: createdDate},
-        {Value: resolvedDate}
+        {
+            Value: technician,
+            Label: 'Technician'
+        },
+        {
+            Value: createdDate,
+            Label: 'Created Date'
+        },
+        {
+            Value: resolvedDate,
+            Label: 'Resolved Date'
+        }
     ]}
 );
 
@@ -351,10 +412,22 @@ annotate AdminService.RepairLogs with @(
             Label : 'Asset',
             Target: 'repairRequest/asset'
         },
-        {Value: logDate},
-        {Value: actionType},
-        {Value: technician},
-        {Value: note}
+        {
+            Value: logDate,
+            Label: 'Log Date'
+        },
+        {
+            Value: actionType,
+            Label: 'Action Type'
+        },
+        {
+            Value: technician,
+            Label: 'Technician'
+        },
+        {
+            Value: note,
+            Label: 'Note'
+        }
     ]},
     UI.LineItem           : [
         {
@@ -422,9 +495,21 @@ annotate AdminService.TechnicianStatistics with @(
         Target: '@UI.FieldGroup#General'
     }],
     UI.FieldGroup #General: {Data: [
-        {Value: technician},
-        {Value: createdDate},
-        {Value: description},
-        {Value: resolutionDays}
+        {
+            Value: technician,
+            Label: 'Technician'
+        },
+        {
+            Value: createdDate,
+            Label: 'Created On'
+        },
+        {
+            Value: description,
+            Label: 'Description'
+        },
+        {
+            Value: resolutionDays,
+            Label: 'Resolution Time (days)'
+        }
     ]}
 );

@@ -68,24 +68,46 @@ annotate RepairService.RepairRequests with @(
         }
     ],
     UI.FieldGroup #General     : {Data: [
-        {Value: assetInventoryNumber},
-        {Value: assetName},
+        {
+            Value: assetInventoryNumber,
+            Label: 'Asset'
+        },
+        {
+            Value: assetName,
+            Label: 'Asset Name'
+        },
         {
             $Type : 'UI.DataFieldWithNavigationPath',
             Value : asset.assignedTo.lastName,
             Label : 'Asset Owner',
             Target: 'asset/assignedTo'
         },
-        {Value: description},
-        {Value: priority_code},
+        {
+            Value: description,
+            Label: 'Description'
+        },
+        {
+            Value: priority_code,
+            Label: 'Priority'
+        },
         {
             Value                    : status_code,
             Criticality              : status.criticality,
-            CriticalityRepresentation: #WithIcon
+            CriticalityRepresentation: #WithIcon,
+            Label                    : 'Status'
         },
-        {Value: technician},
-        {Value: createdDate},
-        {Value: resolvedDate}
+        {
+            Value: technician,
+            Label: 'Technician'
+        },
+        {
+            Value: createdDate,
+            Label: 'Created Date'
+        },
+        {
+            Value: resolvedDate,
+            Label: 'Resolved Date'
+        }
     ]},
     UI.Identification          : [
         {
@@ -157,10 +179,22 @@ annotate RepairService.RepairLogs with @(
             Label : 'Asset',
             Target: 'repairRequest/asset'
         },
-        {Value: logDate},
-        {Value: actionType},
-        {Value: technician},
-        {Value: note}
+        {
+            Value: logDate,
+            Label: 'Log Date'
+        },
+        {
+            Value: actionType,
+            Label: 'Action Type'
+        },
+        {
+            Value: technician,
+            Label: 'Technician'
+        },
+        {
+            Value: note,
+            Label: 'Note'
+        }
     ]},
     UI.LineItem           : [
         {
@@ -178,29 +212,27 @@ annotate RepairService.RepairLogs with @(
 
 
 annotate RepairService.RepairRequests with @(
-    UI.SelectionVariant #Open            : {
-        Text         : 'Open Repair Requests',
-        SelectOptions: [{
-            PropertyName: status_code,
-            Ranges      : [{
-                Sign  : #I,
-                Option: #EQ,
-                Low   : 'OPEN'
-            }]
-        }]
-    },
-    UI.PresentationVariant #Open         : {
-        Text          : 'Open Repair Requests',
-        Visualizations: ['@UI.LineItem'],
-        SortOrder     : [{
-            Property  : createdDate,
-            Descending: true
-        }]
-    },
     UI.SelectionPresentationVariant #Open: {
-        Text               : 'Open Repair Requests',
-        SelectionVariant   : '@UI.SelectionVariant#Open',
-        PresentationVariant: '@UI.PresentationVariant#Open'
+        Text            : 'Open Repair Requests',
+        SelectionVariant: {
+            Text         : 'Open Repair Requests',
+            SelectOptions: [{
+                PropertyName: status_code,
+                Ranges      : [{
+                    Sign  : #I,
+                    Option: #EQ,
+                    Low   : 'OPEN'
+                }]
+            }]
+        },
+        PresentationVariant: {
+            Text          : 'Open Repair Requests',
+            Visualizations: ['@UI.LineItem'],
+            SortOrder     : [{
+                Property  : createdDate,
+                Descending: true
+            }]
+        }
     }
 );
 
@@ -233,11 +265,26 @@ annotate RepairService.Employees with @(
         }
     ],
     UI.FieldGroup #General: {Data: [
-        {Value: employeeNumber},
-        {Value: firstName},
-        {Value: lastName},
-        {Value: email},
-        {Value: department}
+        {
+            Value: employeeNumber,
+            Label: 'Employee Number'
+        },
+        {
+            Value: firstName,
+            Label: 'First Name'
+        },
+        {
+            Value: lastName,
+            Label: 'Last Name'
+        },
+        {
+            Value: email,
+            Label: 'Email'
+        },
+        {
+            Value: department,
+            Label: 'Department'
+        }
     ]}
 );
 
@@ -325,9 +372,18 @@ annotate RepairService.Assets with @(
         }
     ],
     UI.FieldGroup #General     : {Data: [
-        {Value: inventoryNumber},
-        {Value: name},
-        {Value: category_code},
+        {
+            Value: inventoryNumber,
+            Label: 'Inventory Number'
+        },
+        {
+            Value: name,
+            Label: 'Name'
+        },
+        {
+            Value: category_code,
+            Label: 'Category'
+        },
         {
             Value                    : availabilityStatus_code,
             Criticality              : availabilityStatus.criticality,
@@ -340,12 +396,30 @@ annotate RepairService.Assets with @(
             CriticalityRepresentation: #WithIcon,
             Label                    : 'Repair Status'
         },
-        {Value: serialNumber},
-        {Value: manufacturer},
-        {Value: model},
-        {Value: purchaseDate},
-        {Value: warrantyEndDate},
-        {Value: price},
+        {
+            Value: serialNumber,
+            Label: 'Serial Number'
+        },
+        {
+            Value: manufacturer,
+            Label: 'Manufacturer'
+        },
+        {
+            Value: model,
+            Label: 'Model'
+        },
+        {
+            Value: purchaseDate,
+            Label: 'Purchase Date'
+        },
+        {
+            Value: warrantyEndDate,
+            Label: 'Warranty End Date'
+        },
+        {
+            Value: price,
+            Label: 'Price'
+        },
         {
             $Type : 'UI.DataFieldWithNavigationPath',
             Value : assignedTo.lastName,

@@ -79,8 +79,14 @@ annotate InventoryService.Assets with @(
         }
     ],
     UI.FieldGroup #General     : {Data: [
-        {Value: inventoryNumber},
-        {Value: name},
+        {
+            Value: inventoryNumber,
+            Label: 'Inventory Number'
+        },
+        {
+            Value: name,
+            Label: 'Name'
+        },
         {
             Value: category_code,
             Label: 'Category'
@@ -93,12 +99,30 @@ annotate InventoryService.Assets with @(
             Value: repairStatus_code,
             Label: 'Repair Status'
         },
-        {Value: serialNumber},
-        {Value: manufacturer},
-        {Value: model},
-        {Value: purchaseDate},
-        {Value: warrantyEndDate},
-        {Value: price},
+        {
+            Value: serialNumber,
+            Label: 'Serial Number'
+        },
+        {
+            Value: manufacturer,
+            Label: 'Manufacturer'
+        },
+        {
+            Value: model,
+            Label: 'Model'
+        },
+        {
+            Value: purchaseDate,
+            Label: 'Purchase Date'
+        },
+        {
+            Value: warrantyEndDate,
+            Label: 'Warranty End Date'
+        },
+        {
+            Value: price,
+            Label: 'Price'
+        },
         {
             Value: assignedTo_ID,
             Label: 'Assigned to'
@@ -183,8 +207,14 @@ annotate InventoryService.AssetCategories with @(
         Target: '@UI.FieldGroup#General'
     }],
     UI.FieldGroup #General: {Data: [
-        {Value: code},
-        {Value: name}
+        {
+            Value: code,
+            Label: 'Code'
+        },
+        {
+            Value: name,
+            Label: 'Name'
+        }
     ]}
 );
 
@@ -216,11 +246,26 @@ annotate InventoryService.Employees with @(
         }
     ],
     UI.FieldGroup #General: {Data: [
-        {Value: employeeNumber},
-        {Value: firstName},
-        {Value: lastName},
-        {Value: email},
-        {Value: department}
+        {
+            Value: employeeNumber,
+            Label: 'Employee Number'
+        },
+        {
+            Value: firstName,
+            Label: 'First Name'
+        },
+        {
+            Value: lastName,
+            Label: 'Last Name'
+        },
+        {
+            Value: email,
+            Label: 'Email'
+        },
+        {
+            Value: department,
+            Label: 'Department'
+        }
     ]}
 );
 
@@ -272,8 +317,14 @@ annotate InventoryService.AssetAssignments with @(
             Value: employee.department,
             Label: 'Department'
         },
-        {Value: assignedFrom},
-        {Value: returnedOn}
+        {
+            Value: assignedFrom,
+            Label: 'Assigned From'
+        },
+        {
+            Value: returnedOn,
+            Label: 'Returned On'
+        }
     ],
     UI.HeaderInfo         : {
         TypeName      : 'Asset Assignment',
@@ -305,7 +356,13 @@ annotate InventoryService.AssetAssignments with @(
             Value: employee.department,
             Label: 'Department'
         },
-        {Value: assignedFrom},
-        {Value: returnedOn}
+        {
+            Value: assignedFrom,
+            Label: 'Assigned From'
+        },
+        {
+            Value: returnedOn,
+            Label: 'Returned On'
+        }
     ]}
 );
