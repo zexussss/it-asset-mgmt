@@ -84,8 +84,12 @@ annotate EmployeeService.MyRepairRequests with @(
 annotate EmployeeService.MyRepairRequests with {
     status @readonly;
 };
-
 annotate EmployeeService.MyAssets with @(
+    UI.Identification     : [{
+        $Type : 'UI.DataFieldForAction',
+        Action: 'EmployeeService.createRepairRequest',
+        Label : 'Create Repair Request'
+    }],
     UI.SelectionFields    : [
         category_code,
         availabilityStatus_code,
@@ -122,7 +126,8 @@ annotate EmployeeService.MyAssets with @(
     UI.Facets             : [{
         $Type : 'UI.ReferenceFacet',
         Label : 'General Information',
-        Target: '@UI.FieldGroup#General'
+        Target: '@UI.FieldGroup#General',
+
     }],
     UI.FieldGroup #General: {Data: [
         {
@@ -170,4 +175,5 @@ annotate EmployeeService.MyAssets with @(
             Label: 'Warranty End Date'
         }
     ]}
+
 );

@@ -15,8 +15,9 @@ module.exports = cds.service.impl(async function () {
         req.query.where([{ ref: ['requestedBy', 'email'] }, '=', { val: req.user.id }]);
     });
 
-    this.on('createRepairRequest', async (req) => {
-        const { assetID, description, priority } = req.data;
+    this.on('createRepairRequest','MyAssets', async (req) => {
+        const { ID: assetID } = req.params[0];
+        const { description, priority } = req.data;
 
         const employee = await SELECT.one.from('itam.Employee').where({ email: req.user.id });
         if (!employee) {
