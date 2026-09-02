@@ -1,6 +1,10 @@
 {
   "welcomeFile": "/index.html",
   "authenticationMethod": "route",
+  "logout": {
+    "logoutEndpoint": "/do/logout",
+    "logoutPage": "/index.html"
+  },
   "routes": [
     {
       "source": "^/user-api/currentUser$",
