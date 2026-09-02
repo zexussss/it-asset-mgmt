@@ -8,7 +8,7 @@ using {itam as db} from '../db/schema';
 service EmployeeService @(path: '/employee') {
 
     @readonly
-    entity MyAssets                as
+    entity MyAssets              as
         projection on db.Asset {
             *,
             category.name           as categoryName           : String,
@@ -19,7 +19,7 @@ service EmployeeService @(path: '/employee') {
             action createRepairRequest(description: String, priority: String) returns MyRepairRequests;
         };
 
-    entity MyRepairRequests        as
+    entity MyRepairRequests      as
         projection on db.RepairRequest {
             *,
             asset.inventoryNumber as assetInventoryNumber : String,
@@ -27,18 +27,17 @@ service EmployeeService @(path: '/employee') {
         };
 
     @readonly
-    entity AssetCategories         as projection on db.AssetCategory;
+    entity AssetCategories       as projection on db.AssetCategory;
 
     @readonly
-    entity Priorities              as projection on db.Priority;
+    entity Priorities            as projection on db.Priority;
 
     @readonly
-    entity RepairRequestStatuses   as projection on db.RepairRequestStatus;
+    entity RepairRequestStatuses as projection on db.RepairRequestStatus;
 
     @readonly
     entity AssetAvailabilityStatus as projection on db.AssetAvailabilityStatus;
 
     @readonly
-    entity AssetRepairStatus       as projection on db.AssetRepairStatus;
-
+    entity AssetRepairStatus as projection on db.AssetRepairStatus;
 }

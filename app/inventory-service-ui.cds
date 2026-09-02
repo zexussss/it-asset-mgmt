@@ -2,6 +2,11 @@ using {InventoryService} from '../srv/inventory-service';
 
 
 annotate InventoryService.Assets with @(
+    UI.Identification          : [{
+        $Type : 'UI.DataFieldForAction',
+        Action: 'InventoryService.assign',
+        Label : 'Assign'
+    }],
     UI.SelectionFields         : [
         category_code,
         availabilityStatus_code,
@@ -190,6 +195,38 @@ annotate InventoryService.Assets with {
 };
 
 
+annotate InventoryService.Assets with actions {
+    assign(employeeID @(
+        Common.Label    : 'Employee',
+        Common.ValueList: {
+            CollectionPath: 'Employees',
+            Parameters    : [
+                {
+                    $Type            : 'Common.ValueListParameterInOut',
+                    LocalDataProperty: employeeID,
+                    ValueListProperty: 'ID'
+                },
+                {
+                    $Type            : 'Common.ValueListParameterDisplayOnly',
+                    ValueListProperty: 'employeeNumber'
+                },
+                {
+                    $Type            : 'Common.ValueListParameterDisplayOnly',
+                    ValueListProperty: 'firstName'
+                },
+                {
+                    $Type            : 'Common.ValueListParameterDisplayOnly',
+                    ValueListProperty: 'lastName'
+                },
+                {
+                    $Type            : 'Common.ValueListParameterDisplayOnly',
+                    ValueListProperty: 'department'
+                }
+            ]
+        }
+    ) );
+};
+
 annotate InventoryService.AssetCategories with @(
     UI.HeaderInfo         : {
         TypeName      : 'Asset Category',
@@ -219,6 +256,10 @@ annotate InventoryService.AssetCategories with @(
 );
 
 annotate InventoryService.Employees with @(
+    UI.SelectionFields    : [
+        department,
+        employeeNumber
+    ],
     UI.HeaderInfo         : {
         TypeName      : 'Employee',
         TypeNamePlural: 'Employees',

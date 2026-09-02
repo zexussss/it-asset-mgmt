@@ -11,11 +11,19 @@ service InventoryService @(path: '/inventory') {
     entity Assets                    as
         projection on db.Asset {
             *,
-            category.name           as categoryName           : String,
-            availabilityStatus.name as availabilityStatusName : String,
-            repairStatus.name       as repairStatusName       : String,
-            assignedTo.firstName    as assignedToFirstName    : String,
-            assignedTo.lastName     as assignedToLastName     : String
+            category.name                          as categoryName           : String,
+            availabilityStatus.name                 as availabilityStatusName : String,
+            repairStatus.name                       as repairStatusName       : String,
+            assignedTo.firstName                    as assignedToFirstName    : String,
+            assignedTo.lastName                     as assignedToLastName     : String,
+            case
+                when availabilityStatus.code = 'IN_STOCK' then true
+                else false
+            end                                  as isAssignable           : Boolean
+        }
+        actions {
+            @Core.OperationAvailable: isAssignable
+            action assign(employeeID: UUID) returns Assets;
         };
 
     entity AssetCategories           as projection on db.AssetCategory;
