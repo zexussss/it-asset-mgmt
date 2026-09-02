@@ -1,5 +1,6 @@
 const cds = require('@sap/cds');
 const registerEnsureEmployee = require('./lib/ensure-employee');
+const { calculateResolutionDays } = require('./lib/repair-utils');
 
 module.exports = cds.service.impl(async function () {
     const { SELECT, UPDATE, INSERT } = cds.ql;
@@ -34,9 +35,7 @@ module.exports = cds.service.impl(async function () {
         const today = new Date().toISOString().slice(0, 10);
 
         const before = await SELECT.one.from(RepairRequests).where({ ID });
-        const resolutionDays = before && before.createdDate
-            ? Math.max(0, Math.round((new Date(today) - new Date(before.createdDate)) / 86400000))
-            : null;
+        const resolutionDays = calculateResolutionDays(before && before.createdDate, today);
 
         await UPDATE(RepairRequests, ID).with({ status_code: 'COMPLETED', resolvedDate: today, resolutionDays });
 
