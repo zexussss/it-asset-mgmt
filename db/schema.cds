@@ -1,6 +1,9 @@
 namespace itam;
 
-using { cuid, managed } from '@sap/cds/common';
+using {
+  cuid,
+  managed
+} from '@sap/cds/common';
 
 entity AssetCategory {
   key code : String(10);
@@ -37,31 +40,35 @@ entity Employee : cuid {
   lastName       : String(50);
   email          : String(100);
   department     : String(50);
-  assets         : Association to many Asset on assets.assignedTo = $self;
+  assets         : Association to many Asset
+                     on assets.assignedTo = $self;
 }
 
 entity Asset : cuid, managed {
-  inventoryNumber     : String(20)  @mandatory;
-  name                : String(100) @mandatory;
-  category            : Association to AssetCategory;
+  inventoryNumber           : String(20)  @mandatory;
+  name                      : String(100) @mandatory;
+  category                  : Association to AssetCategory;
 
-  availabilityStatus  : Association to AssetAvailabilityStatus default 'IN_STOCK';
-  repairStatus        : Association to AssetRepairStatus default 'OK';
+  availabilityStatus        : Association to AssetAvailabilityStatus default 'IN_STOCK';
+  repairStatus              : Association to AssetRepairStatus default 'OK';
 
-  serialNumber        : String(50);
-  manufacturer        : String(50);
-  model               : String(100);
-  purchaseDate        : Date;
-  warrantyEndDate     : Date;
-  price               : Decimal(10,2);
+  serialNumber              : String(50);
+  manufacturer              : String(50);
+  model                     : String(100);
+  purchaseDate              : Date;
+  warrantyEndDate           : Date;
+  price                     : Decimal(10, 2);
 
-  assignedTo          : Association to Employee;
+  assignedTo                : Association to Employee;
 
-  repairRequests    : Composition of many RepairRequest  on repairRequests.asset  = $self;
-  assignmentHistory : Composition of many AssetAssignment on assignmentHistory.asset = $self;
-  notes             : Composition of many AssetNote      on notes.asset          = $self;
+  repairRequests            : Composition of many RepairRequest
+                                on repairRequests.asset = $self;
+  assignmentHistory         : Composition of many AssetAssignment
+                                on assignmentHistory.asset = $self;
+  notes                     : Composition of many AssetNote
+                                on notes.asset = $self;
 
-  virtual averageRepairDays : Decimal(5,1);
+  virtual averageRepairDays : Decimal(5, 1);
 }
 
 entity AssetAssignment : cuid {
@@ -87,7 +94,8 @@ entity RepairRequest : cuid, managed {
   createdDate    : Date;
   resolvedDate   : Date;
   resolutionDays : Integer;
-  repairLogs   : Composition of many RepairLog on repairLogs.repairRequest = $self;
+  repairLogs     : Composition of many RepairLog
+                     on repairLogs.repairRequest = $self;
 }
 
 entity RepairLog : cuid {
