@@ -1,0 +1,5 @@
+code;name;criticality
+LOW;Low;3
+MEDIUM;Medium;0
+HIGH;High;2
+CRITICAL;Critical;1

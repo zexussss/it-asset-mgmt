@@ -1,23 +1,69 @@
 {
   "name": "it-asset-mgmt",
   "version": "1.0.0",
-  "type": "module",
   "dependencies": {
     "@cap-js/hana": "^3",
     "@sap/cds": "^10",
     "@sap/xssec": "^4"
   },
   "devDependencies": {
-    "@cap-js/sqlite": "^3"
+    "@sap/cds-dk": "^10.0.7"
   },
   "scripts": {
-    "start": "cds-serve"
+    "start": "cds-serve",
+    "watch": "cds watch",
+    "deploy": "cds deploy"
   },
-  "private": true,
   "cds": {
+    "fiori": {
+      "preview": true
+    },
     "requires": {
+      "db": {
+        "kind": "sql"
+      },
       "[production]": {
-        "auth": "xsuaa"
+        "auth": "xsuaa",
+        "db": {
+          "kind": "hana-cloud"
+        }
+      },
+      "[development]": {
+        "auth": {
+          "kind": "mocked",
+          "users": {
+            "admin": {
+              "password": "admin",
+              "roles": [
+                "Admin"
+              ]
+            },
+            "technician": {
+              "password": "technician",
+              "roles": [
+                "RepairTechnician"
+              ]
+            },
+            "manager": {
+              "password": "manager",
+              "roles": [
+                "AssetManager"
+              ]
+            },
+            "alice@company.com": {
+              "password": "alice",
+              "roles": [
+                "Employee"
+              ]
+            }
+          }
+        },
+        "db": {
+          "kind": "sqlite",
+          "credentials": {
+            "url": ":memory:"
+          }
+        }
       }
     }
   }

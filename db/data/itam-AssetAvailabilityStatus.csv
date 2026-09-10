@@ -1,0 +1,4 @@
+code;name;criticality
+IN_STOCK;In Stock;0
+ASSIGNED;Assigned to Employee;3
+DECOMMISSIONED;Decommissioned;1

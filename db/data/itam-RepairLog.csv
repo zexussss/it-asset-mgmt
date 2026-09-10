@@ -1,0 +1,80 @@
+ID;repairRequest_ID;logDate;actionType;technician;note
+4d4d4d4d-0000-0000-0000-000000000001;3c3c3c3c-0000-0000-0000-000000000001;2026-08-20T09:00:00Z;Diagnosis;;Request received, awaiting triage.
+4d4d4d4d-0000-0000-0000-000000000002;3c3c3c3c-0000-0000-0000-000000000002;2026-08-21T09:30:00Z;Diagnosis;;Request received, awaiting triage.
+4d4d4d4d-0000-0000-0000-000000000003;3c3c3c3c-0000-0000-0000-000000000003;2026-08-22T10:00:00Z;Diagnosis;;Request received, awaiting triage.
+4d4d4d4d-0000-0000-0000-000000000004;3c3c3c3c-0000-0000-0000-000000000004;2026-08-23T08:15:00Z;Diagnosis;;Request received, marked critical due to floor-wide impact.
+4d4d4d4d-0000-0000-0000-000000000005;3c3c3c3c-0000-0000-0000-000000000005;2026-08-05T09:15:00Z;Diagnosis;Carla Nowak;Request received, scheduled for diagnosis.
+4d4d4d4d-0000-0000-0000-000000000006;3c3c3c3c-0000-0000-0000-000000000005;2026-08-06T11:00:00Z;InProgress;Carla Nowak;Inspecting volume button assembly.
+4d4d4d4d-0000-0000-0000-000000000007;3c3c3c3c-0000-0000-0000-000000000006;2026-08-15T09:15:00Z;Diagnosis;Carla Nowak;Request received, scheduled for diagnosis.
+4d4d4d4d-0000-0000-0000-000000000008;3c3c3c3c-0000-0000-0000-000000000006;2026-08-16T10:00:00Z;PartsOrdered;Carla Nowak;Feed roller kit ordered from vendor, ETA 5 business days.
+4d4d4d4d-0000-0000-0000-000000000009;3c3c3c3c-0000-0000-0000-000000000006;2026-08-17T14:00:00Z;InProgress;Carla Nowak;Waiting for spare part delivery before reassembly.
+4d4d4d4d-0000-0000-0000-000000000010;3c3c3c3c-0000-0000-0000-000000000007;2026-08-10T09:15:00Z;Diagnosis;Carla Nowak;Request received, scheduled for diagnosis.
+4d4d4d4d-0000-0000-0000-000000000011;3c3c3c3c-0000-0000-0000-000000000007;2026-08-11T10:00:00Z;InProgress;Carla Nowak;Power supply unit suspected faulty, ordering replacement part.
+4d4d4d4d-0000-0000-0000-000000000012;3c3c3c3c-0000-0000-0000-000000000008;2026-08-18T08:30:00Z;Diagnosis;Carla Nowak;Device inspected, screen and digitizer both damaged.
+4d4d4d4d-0000-0000-0000-000000000013;3c3c3c3c-0000-0000-0000-000000000008;2026-08-18T15:00:00Z;PartsOrdered;Carla Nowak;Replacement screen assembly ordered, expedited shipping requested.
+4d4d4d4d-0000-0000-0000-000000000014;3c3c3c3c-0000-0000-0000-000000000008;2026-08-19T09:00:00Z;InProgress;Carla Nowak;Awaiting part delivery, loaner device issued to employee.
+4d4d4d4d-0000-0000-0000-000000000015;3c3c3c3c-0000-0000-0000-000000000009;2026-06-15T09:00:00Z;Diagnosis;Carla Nowak;Mouse inspected, scroll wheel mechanism worn out.
+4d4d4d4d-0000-0000-0000-000000000016;3c3c3c3c-0000-0000-0000-000000000009;2026-06-15T13:00:00Z;InProgress;Carla Nowak;Replacement unit taken from spare stock.
+4d4d4d4d-0000-0000-0000-000000000017;3c3c3c3c-0000-0000-0000-000000000009;2026-06-16T10:00:00Z;Fixed;Carla Nowak;Device swapped for a new unit, old one scrapped.
+4d4d4d4d-0000-0000-0000-000000000018;3c3c3c3c-0000-0000-0000-000000000010;2026-05-01T09:00:00Z;Diagnosis;Carla Nowak;Screen protector cracked, digitizer response inconsistent in corner.
+4d4d4d4d-0000-0000-0000-000000000019;3c3c3c3c-0000-0000-0000-000000000010;2026-05-03T11:00:00Z;PartsOrdered;Carla Nowak;New screen protector and calibration tool requested.
+4d4d4d4d-0000-0000-0000-000000000020;3c3c3c3c-0000-0000-0000-000000000010;2026-05-05T10:00:00Z;Fixed;Carla Nowak;Protector replaced, digitizer recalibrated, tested OK.
+4d4d4d4d-0000-0000-0000-000000000021;3c3c3c3c-0000-0000-0000-000000000011;2026-05-20T09:00:00Z;Diagnosis;Carla Nowak;Reviewed crash dumps, pointing to outdated GPU driver.
+4d4d4d4d-0000-0000-0000-000000000022;3c3c3c3c-0000-0000-0000-000000000011;2026-05-21T13:00:00Z;InProgress;Carla Nowak;Updating GPU driver and BIOS firmware.
+4d4d4d4d-0000-0000-0000-000000000023;3c3c3c3c-0000-0000-0000-000000000011;2026-05-22T10:00:00Z;Fixed;Carla Nowak;No crashes after 24h stress test, closing request.
+4d4d4d4d-0000-0000-0000-000000000024;3c3c3c3c-0000-0000-0000-000000000012;2026-04-10T09:00:00Z;Diagnosis;Carla Nowak;USB-C port tested faulty, dock has intermittent power delivery.
+4d4d4d4d-0000-0000-0000-000000000025;3c3c3c3c-0000-0000-0000-000000000012;2026-04-10T14:00:00Z;InProgress;Carla Nowak;Swapping for replacement dock from stock.
+4d4d4d4d-0000-0000-0000-000000000026;3c3c3c3c-0000-0000-0000-000000000012;2026-04-11T09:00:00Z;Fixed;Carla Nowak;New dock installed and tested, all ports working.
+4d4d4d4d-0000-0000-0000-000000000027;3c3c3c3c-0000-0000-0000-000000000013;2026-03-01T09:00:00Z;Diagnosis;Carla Nowak;Inspected keyboard, spacebar mechanism worn, unit is out of warranty.
+4d4d4d4d-0000-0000-0000-000000000028;3c3c3c3c-0000-0000-0000-000000000013;2026-03-02T09:00:00Z;Rejected;Carla Nowak;Repair cost exceeds replacement value for this low-cost item, request rejected.
+4d4d4d4d-0000-0000-0000-000000000029;3c3c3c3c-0000-0000-0000-000000000014;2026-03-05T09:00:00Z;Diagnosis;Carla Nowak;Reviewed upgrade request against current fleet budget.
+4d4d4d4d-0000-0000-0000-000000000030;3c3c3c3c-0000-0000-0000-000000000014;2026-03-06T09:00:00Z;Rejected;Carla Nowak;Not approved this quarter due to budget constraints, revisit next cycle.
+4d4d4d4d-0000-0000-0000-000000000031;3c3c3c3c-0000-0000-0000-000000000015;2026-02-10T09:00:00Z;Diagnosis;Carla Nowak;Device confirmed lost, not in company's possession, cannot be repaired.
+4d4d4d4d-0000-0000-0000-000000000032;3c3c3c3c-0000-0000-0000-000000000015;2026-02-11T09:00:00Z;Rejected;Carla Nowak;Closed as not repairable, forwarded to insurance/loss process instead.
+4d4d4d4d-0000-0000-0000-000000000033;3c3c3c3c-0000-0000-0000-000000000016;2026-01-15T09:00:00Z;Diagnosis;Carla Nowak;Checked asset master data, unit already marked decommissioned.
+4d4d4d4d-0000-0000-0000-000000000034;3c3c3c3c-0000-0000-0000-000000000016;2026-01-16T09:00:00Z;Rejected;Carla Nowak;Decommissioned equipment is not repaired, request closed.
+4d4d4d4d-0000-0000-0000-000000000035;3c3c3c3c-0000-0000-0000-000000000017;2026-08-24T09:00:00Z;Diagnosis;Carla Nowak;Spare unit pulled from stock for pre-deployment check.
+4d4d4d4d-0000-0000-0000-000000000036;3c3c3c3c-0000-0000-0000-000000000017;2026-08-25T11:00:00Z;InProgress;Carla Nowak;Recalibrating touchscreen digitizer and updating firmware before it is issued to an employee.
+4d4d4d4d-0000-0000-0000-000000000078;3c3c3c3c-0000-0000-0000-000000000039;2026-08-24T09:00:00Z;Diagnosis;Carla Nowak;Request received, scheduled for diagnosis: trackpad occasionally unresponsive
+4d4d4d4d-0000-0000-0000-000000000079;3c3c3c3c-0000-0000-0000-000000000039;2026-08-24T13:00:00Z;InProgress;Carla Nowak;Work in progress: trackpad occasionally unresponsive
+4d4d4d4d-0000-0000-0000-000000000037;3c3c3c3c-0000-0000-0000-000000000018;2026-02-01T09:00:00Z;Diagnosis;Carla Nowak;Request received, scheduled for diagnosis: replaced worn keycaps
+4d4d4d4d-0000-0000-0000-000000000038;3c3c3c3c-0000-0000-0000-000000000018;2026-02-01T13:00:00Z;InProgress;Carla Nowak;Work in progress: replaced worn keycaps
+4d4d4d4d-0000-0000-0000-000000000039;3c3c3c3c-0000-0000-0000-000000000018;2026-02-02T10:00:00Z;Fixed;Carla Nowak;Resolved: replaced worn keycaps
+4d4d4d4d-0000-0000-0000-000000000040;3c3c3c3c-0000-0000-0000-000000000019;2026-01-05T09:00:00Z;Diagnosis;;Request received, scheduled for diagnosis: requested laptop upgrade to a higher spec model
+4d4d4d4d-0000-0000-0000-000000000041;3c3c3c3c-0000-0000-0000-000000000019;2026-01-05T15:00:00Z;Rejected;;Request rejected: requested laptop upgrade to a higher spec model
+4d4d4d4d-0000-0000-0000-000000000042;3c3c3c3c-0000-0000-0000-000000000020;2026-08-24T09:00:00Z;Diagnosis;;Request received, scheduled for diagnosis: monitor cable connector loose
+4d4d4d4d-0000-0000-0000-000000000043;3c3c3c3c-0000-0000-0000-000000000021;2026-01-10T09:00:00Z;Diagnosis;Carla Nowak;Request received, scheduled for diagnosis: replaced faulty RAM module
+4d4d4d4d-0000-0000-0000-000000000044;3c3c3c3c-0000-0000-0000-000000000021;2026-01-10T13:00:00Z;InProgress;Carla Nowak;Work in progress: replaced faulty RAM module
+4d4d4d4d-0000-0000-0000-000000000045;3c3c3c3c-0000-0000-0000-000000000021;2026-01-12T10:00:00Z;Fixed;Carla Nowak;Resolved: replaced faulty RAM module
+4d4d4d4d-0000-0000-0000-000000000046;3c3c3c3c-0000-0000-0000-000000000022;2025-12-01T09:00:00Z;Diagnosis;;Request received, scheduled for diagnosis: requested full desktop replacement instead of repair
+4d4d4d4d-0000-0000-0000-000000000047;3c3c3c3c-0000-0000-0000-000000000022;2025-12-01T15:00:00Z;Rejected;;Request rejected: requested full desktop replacement instead of repair
+4d4d4d4d-0000-0000-0000-000000000048;3c3c3c3c-0000-0000-0000-000000000023;2026-07-01T09:00:00Z;Diagnosis;David Kim;Request received, scheduled for diagnosis: replaced cracked charging port
+4d4d4d4d-0000-0000-0000-000000000049;3c3c3c3c-0000-0000-0000-000000000023;2026-07-01T13:00:00Z;InProgress;David Kim;Work in progress: replaced cracked charging port
+4d4d4d4d-0000-0000-0000-000000000050;3c3c3c3c-0000-0000-0000-000000000023;2026-07-03T10:00:00Z;Fixed;David Kim;Resolved: replaced cracked charging port
+4d4d4d4d-0000-0000-0000-000000000051;3c3c3c3c-0000-0000-0000-000000000024;2026-08-25T09:00:00Z;Diagnosis;;Request received, scheduled for diagnosis: iPad occasionally restarts randomly
+4d4d4d4d-0000-0000-0000-000000000052;3c3c3c3c-0000-0000-0000-000000000025;2026-08-01T09:00:00Z;Diagnosis;Carla Nowak;Request received, scheduled for diagnosis: charging port intermittent, diagnosing
+4d4d4d4d-0000-0000-0000-000000000053;3c3c3c3c-0000-0000-0000-000000000025;2026-08-01T13:00:00Z;InProgress;Carla Nowak;Work in progress: charging port intermittent, diagnosing
+4d4d4d4d-0000-0000-0000-000000000054;3c3c3c3c-0000-0000-0000-000000000026;2026-08-25T09:00:00Z;Diagnosis;;Request received, scheduled for diagnosis: fan making a loud grinding noise
+4d4d4d4d-0000-0000-0000-000000000055;3c3c3c3c-0000-0000-0000-000000000027;2026-08-19T09:00:00Z;Diagnosis;Carla Nowak;Request received, scheduled for diagnosis: investigating repeated network connectivity drops
+4d4d4d4d-0000-0000-0000-000000000056;3c3c3c3c-0000-0000-0000-000000000027;2026-08-19T13:00:00Z;InProgress;Carla Nowak;Work in progress: investigating repeated network connectivity drops
+4d4d4d4d-0000-0000-0000-000000000057;3c3c3c3c-0000-0000-0000-000000000028;2025-11-01T09:00:00Z;Diagnosis;;Request received, scheduled for diagnosis: requested cosmetic case replacement
+4d4d4d4d-0000-0000-0000-000000000058;3c3c3c3c-0000-0000-0000-000000000028;2025-11-01T15:00:00Z;Rejected;;Request rejected: requested cosmetic case replacement
+4d4d4d4d-0000-0000-0000-000000000059;3c3c3c3c-0000-0000-0000-000000000029;2025-10-01T09:00:00Z;Diagnosis;;Request received, scheduled for diagnosis: requested a larger monitor upgrade
+4d4d4d4d-0000-0000-0000-000000000060;3c3c3c3c-0000-0000-0000-000000000029;2025-10-01T15:00:00Z;Rejected;;Request rejected: requested a larger monitor upgrade
+4d4d4d4d-0000-0000-0000-000000000061;3c3c3c3c-0000-0000-0000-000000000030;2026-08-25T09:00:00Z;Diagnosis;;Request received, scheduled for diagnosis: mouse occasionally double-clicks on a single click
+4d4d4d4d-0000-0000-0000-000000000062;3c3c3c3c-0000-0000-0000-000000000031;2026-08-02T09:00:00Z;Diagnosis;Carla Nowak;Request received, scheduled for diagnosis: testing a replacement sensor unit
+4d4d4d4d-0000-0000-0000-000000000063;3c3c3c3c-0000-0000-0000-000000000031;2026-08-02T13:00:00Z;InProgress;Carla Nowak;Work in progress: testing a replacement sensor unit
+4d4d4d4d-0000-0000-0000-000000000064;3c3c3c3c-0000-0000-0000-000000000032;2025-09-01T09:00:00Z;Diagnosis;;Request received, scheduled for diagnosis: requested an ergonomic mouse instead of a standard replacement
+4d4d4d4d-0000-0000-0000-000000000065;3c3c3c3c-0000-0000-0000-000000000032;2025-09-01T15:00:00Z;Rejected;;Request rejected: requested an ergonomic mouse instead of a standard replacement
+4d4d4d4d-0000-0000-0000-000000000066;3c3c3c3c-0000-0000-0000-000000000033;2026-08-25T09:00:00Z;Diagnosis;;Request received, scheduled for diagnosis: microphone very quiet, other party can not hear
+4d4d4d4d-0000-0000-0000-000000000067;3c3c3c3c-0000-0000-0000-000000000034;2026-08-03T09:00:00Z;Diagnosis;Carla Nowak;Request received, scheduled for diagnosis: testing a replacement headset unit
+4d4d4d4d-0000-0000-0000-000000000068;3c3c3c3c-0000-0000-0000-000000000034;2026-08-03T13:00:00Z;InProgress;Carla Nowak;Work in progress: testing a replacement headset unit
+4d4d4d4d-0000-0000-0000-000000000069;3c3c3c3c-0000-0000-0000-000000000035;2026-01-15T09:00:00Z;Diagnosis;Carla Nowak;Request received, scheduled for diagnosis: earpad replaced under initial defect claim
+4d4d4d4d-0000-0000-0000-000000000070;3c3c3c3c-0000-0000-0000-000000000035;2026-01-15T13:00:00Z;InProgress;Carla Nowak;Work in progress: earpad replaced under initial defect claim
+4d4d4d4d-0000-0000-0000-000000000071;3c3c3c3c-0000-0000-0000-000000000035;2026-01-16T10:00:00Z;Fixed;Carla Nowak;Resolved: earpad replaced under initial defect claim
+4d4d4d4d-0000-0000-0000-000000000072;3c3c3c3c-0000-0000-0000-000000000036;2026-08-25T09:00:00Z;Diagnosis;;Request received, scheduled for diagnosis: monitor stand wobbly, needs tightening or replacement
+4d4d4d4d-0000-0000-0000-000000000073;3c3c3c3c-0000-0000-0000-000000000037;2026-02-10T09:00:00Z;Diagnosis;Carla Nowak;Request received, scheduled for diagnosis: replaced faulty HDMI cable
+4d4d4d4d-0000-0000-0000-000000000074;3c3c3c3c-0000-0000-0000-000000000037;2026-02-10T13:00:00Z;InProgress;Carla Nowak;Work in progress: replaced faulty HDMI cable
+4d4d4d4d-0000-0000-0000-000000000075;3c3c3c3c-0000-0000-0000-000000000037;2026-02-10T10:00:00Z;Fixed;Carla Nowak;Resolved: replaced faulty HDMI cable
+4d4d4d4d-0000-0000-0000-000000000076;3c3c3c3c-0000-0000-0000-000000000038;2025-08-01T09:00:00Z;Diagnosis;;Request received, scheduled for diagnosis: requested a phone upgrade instead of a screen repair
+4d4d4d4d-0000-0000-0000-000000000077;3c3c3c3c-0000-0000-0000-000000000038;2025-08-01T15:00:00Z;Rejected;;Request rejected: requested a phone upgrade instead of a screen repair

@@ -1,0 +1,5 @@
+code;name;criticality
+OPEN;Open;2
+IN_PROGRESS;In Progress;2
+COMPLETED;Completed;3
+REJECTED;Rejected;1
