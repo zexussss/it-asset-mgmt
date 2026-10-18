@@ -1,52 +1,21 @@
 {
   "scopes": [
-    {
-      "name": "$XSAPPNAME.Admin",
-      "description": "Admin"
-    },
-    {
-      "name": "$XSAPPNAME.Employee",
-      "description": "Employee"
-    },
-    {
-      "name": "$XSAPPNAME.AssetManager",
-      "description": "AssetManager"
-    },
-    {
-      "name": "$XSAPPNAME.RepairTechnician",
-      "description": "RepairTechnician"
-    }
+    { "name": "$XSAPPNAME.Admin",            "description": "Admin" },
+    { "name": "$XSAPPNAME.Employee",         "description": "Employee" },
+    { "name": "$XSAPPNAME.AssetManager",     "description": "AssetManager" },
+    { "name": "$XSAPPNAME.RepairTechnician", "description": "RepairTechnician" }
   ],
   "attributes": [],
   "role-templates": [
-    {
-      "name": "Admin",
-      "description": "Admin",
-      "scope-references": [
-        "$XSAPPNAME.Admin"
-      ]
-    },
-    {
-      "name": "Employee",
-      "description": "Employee",
-      "scope-references": [
-        "$XSAPPNAME.Employee"
-      ]
-    },
-    {
-      "name": "AssetManager",
-      "description": "AssetManager",
-      "scope-references": [
-        "$XSAPPNAME.AssetManager"
-      ]
-    },
-    {
-      "name": "RepairTechnician",
-      "description": "RepairTechnician",
-      "scope-references": [
-        "$XSAPPNAME.RepairTechnician"
-      ]
-    }
+    { "name": "Admin",            "description": "Admin",            "scope-references": ["$XSAPPNAME.Admin"] },
+    { "name": "Employee",         "description": "Employee",         "scope-references": ["$XSAPPNAME.Employee"] },
+    { "name": "AssetManager",     "description": "AssetManager",     "scope-references": ["$XSAPPNAME.AssetManager"] },
+    { "name": "RepairTechnician", "description": "RepairTechnician", "scope-references": ["$XSAPPNAME.RepairTechnician"] }
   ],
-  "authorities-inheritance": false
+  "authorities-inheritance": false,
+  "oauth2-configuration": {
+    "redirect-uris": [
+      "https://*.cfapps.us10-001.hana.ondemand.com/**"
+    ]
+  }
 }

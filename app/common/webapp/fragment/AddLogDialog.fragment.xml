@@ -1,0 +1,19 @@
+<core:FragmentDefinition xmlns="sap.m" xmlns:core="sap.ui.core">
+
+  <Dialog id="addLogDialog" title="{i18n>addLog}" contentWidth="32rem">
+    <content>
+      <VBox class="sapUiMediumMargin">
+        <Label text="{i18n>note}" labelFor="noteInput" />
+        <TextArea id="noteInput" rows="4" width="100%"
+                  placeholder="{i18n>notePlaceholder}" class="sapUiTinyMarginTop" />
+        <Text text="{i18n>addLogHint}" class="itamCellMuted sapUiSmallMarginTop" />
+      </VBox>
+    </content>
+    <beginButton>
+      <Button text="{i18n>save}" type="Emphasized" press="onConfirmAddLog" />
+    </beginButton>
+    <endButton>
+      <Button text="{i18n>cancel}" press="onCancelAddLog" />
+    </endButton>
+  </Dialog>
+</core:FragmentDefinition>

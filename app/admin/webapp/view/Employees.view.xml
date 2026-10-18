@@ -1,0 +1,61 @@
+<mvc:View controllerName="admin.controller.Employees"
+  xmlns:mvc="sap.ui.core.mvc" xmlns="sap.m" xmlns:core="sap.ui.core">
+
+  <Page showHeader="false" enableScrolling="true" class="itamPage">
+    <content>
+      <VBox class="itamPageContent">
+
+        <core:Fragment fragmentName="common.fragment.PageHeader" type="XML" />
+        <core:Fragment fragmentName="common.fragment.ListToolbar" type="XML" />
+
+        <Panel class="itamPanel">
+          <headerToolbar>
+            <OverflowToolbar class="itamPanelHeader">
+              <HBox alignItems="Center">
+                <Title text="{i18n>employees}" level="H3" class="itamPanelTitle" />
+                <Text text="{ui>/count}" class="itamCountBadge"
+                      visible="{= ${ui>/count} !== null }" />
+              </HBox>
+              <ToolbarSpacer />
+              <Button icon="sap-icon://action-settings" type="Transparent"
+                      press="onPanelMenu" tooltip="{i18n>panelSettings}" />
+            </OverflowToolbar>
+          </headerToolbar>
+
+          <Table id="mainTable" class="itamTable" inset="false"
+                 mode="SingleSelectMaster" selectionChange="onSelect"
+                 growing="true" growingThreshold="20"
+                 updateFinished="onUpdateFinished"
+                 noDataText="{i18n>noData}"
+                 items="{ path: '/Employees', parameters: { $count: true } }">
+            <columns>
+              <Column width="9rem"><Text text="{i18n>employeeNumber}" /></Column>
+              <Column minScreenWidth="Tablet"><Text text="{i18n>name}" /></Column>
+              <Column><Text text="{i18n>department}" /></Column>
+              <Column minScreenWidth="Tablet"><Text text="{i18n>email}" /></Column>
+            </columns>
+
+            <items>
+              <ColumnListItem vAlign="Middle">
+                <cells>
+                  <Text text="{employeeNumber}" class="itamCellStrong" />
+
+                  <HBox alignItems="Center">
+                    <Avatar initials="{= (${firstName} || '').substring(0,1) + (${lastName} || '').substring(0,1) }"
+                            displaySize="XS" class="sapUiTinyMarginEnd" />
+                    <Text text="{parts: [{path: 'lastName'}, {path: 'firstName'}],
+                                  formatter: '.formatter.fullName'}" />
+                  </HBox>
+
+                  <Text text="{department}" />
+                  <Text text="{email}" class="itamCellMuted" />
+                </cells>
+              </ColumnListItem>
+            </items>
+          </Table>
+        </Panel>
+
+      </VBox>
+    </content>
+  </Page>
+</mvc:View>

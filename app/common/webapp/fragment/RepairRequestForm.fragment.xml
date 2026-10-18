@@ -1,0 +1,45 @@
+<core:FragmentDefinition
+  xmlns="sap.m"
+  xmlns:core="sap.ui.core"
+  xmlns:form="sap.ui.layout.form">
+
+  <form:SimpleForm editable="false" layout="ResponsiveGridLayout"
+                columnsXL="3" columnsL="2" columnsM="1"
+                labelSpanXL="2" labelSpanL="2" labelSpanM="3" labelSpanS="12"
+                class="itamDetailForm sapUiSmallMargin">
+
+    <Label text="{i18n>asset}" />
+    <Text text="{asset/inventoryNumber}" class="itamCellStrong" />
+
+    <Label text="{i18n>assetName}" />
+    <Text text="{asset/name}" />
+
+    <Label text="{i18n>assetOwner}" />
+    <Text text="{parts: [{path: 'asset/assignedTo/lastName'},
+                          {path: 'asset/assignedTo/firstName'}],
+                    formatter: '.formatter.fullName'}" />
+
+    <Label text="{i18n>description}" />
+    <Text text="{description}" />
+
+    <Label text="{i18n>priority}" />
+    <ObjectStatus class="itamPill" text="{priority_code}"
+      state="{path: 'priority/criticality', formatter: '.formatter.critState'}" />
+
+    <Label text="{i18n>status}" />
+    <ObjectStatus class="itamPill"
+      text="{status_code}"
+      state="{path: 'status/criticality', formatter: '.formatter.critState'}"
+      icon="{path: 'status/criticality', formatter: '.formatter.critIcon'}" />
+
+    <Label text="{i18n>technician}" />
+    <Text text="{technician}" />
+
+    <Label text="{i18n>createdDate}" />
+    <Text text="{createdDate}" />
+
+    <Label text="{i18n>resolvedDate}" />
+    <Text text="{resolvedDate}" />
+
+  </form:SimpleForm>
+</core:FragmentDefinition>

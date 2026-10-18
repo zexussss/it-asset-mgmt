@@ -1,0 +1,167 @@
+{
+  "sap.app": {
+    "id": "inventory",
+    "type": "application",
+    "i18n": "i18n/i18n.properties",
+    "applicationVersion": {
+      "version": "1.0.0"
+    },
+    "title": "{{appTitle}}",
+    "description": "{{appDescription}}",
+    "dataSources": {
+      "mainService": {
+        "uri": "service/inventory/",
+        "type": "OData",
+        "settings": {
+          "odataVersion": "4.0"
+        }
+      }
+    },
+    "crossNavigation": {
+      "inbounds": {
+        "ITAM-manageInventory": {
+          "semanticObject": "ITAM",
+          "action": "manageInventory",
+          "title": "Inventory Portal",
+          "subTitle": "Asset inventory",
+          "icon": "sap-icon://inventory",
+          "signature": {
+            "parameters": {},
+            "additionalParameters": "allowed"
+          }
+        }
+      }
+    }
+  },
+  "sap.cloud": {
+    "public": true,
+    "service": "itassetmgmt.service"
+  },
+  "sap.ui": {
+    "technology": "UI5",
+    "icons": {
+      "icon": "sap-icon://inventory"
+    }
+  },
+  "sap.ui5": {
+    "rootView": {
+      "viewName": "inventory.view.App",
+      "type": "XML",
+      "id": "app",
+      "async": true
+    },
+    "dependencies": {
+      "minUI5Version": "1.120.0",
+      "libs": {
+        "sap.ui.core": {},
+        "sap.m": {},
+        "sap.f": {},
+        "sap.tnt": {},
+        "sap.ui.layout": {}
+      }
+    },
+    "contentDensities": {
+      "compact": true,
+      "cozy": false
+    },
+    "resourceRoots": {
+      "common": "./common/"
+    },
+    "resources": {
+      "css": [
+        {
+          "uri": "common/css/cockpit.css"
+        }
+      ]
+    },
+    "models": {
+      "": {
+        "dataSource": "mainService",
+        "settings": {
+          "operationMode": "Server",
+          "autoExpandSelect": true,
+          "earlyRequests": true
+        }
+      },
+      "i18n": {
+        "type": "sap.ui.model.resource.ResourceModel",
+        "settings": {
+          "bundleName": "inventory.i18n.i18n"
+        }
+      }
+    },
+    "routing": {
+      "config": {
+        "routerClass": "sap.m.routing.Router",
+        "type": "View",
+        "viewType": "XML",
+        "path": "inventory.view",
+        "controlId": "app",
+        "controlAggregation": "pages",
+        "transition": "slide",
+        "async": true
+      },
+      "routes": [
+        {
+          "pattern": "",
+          "name": "home",
+          "target": "home"
+        },
+        {
+          "pattern": "Assets({key})",
+          "name": "assetDetails",
+          "target": "assetDetails"
+        },
+        {
+          "pattern": "Employees",
+          "name": "employees",
+          "target": "employees"
+        },
+        {
+          "pattern": "Employees({key})",
+          "name": "employeeDetails",
+          "target": "employeeDetails"
+        },
+        {
+          "pattern": "Categories",
+          "name": "categories",
+          "target": "categories"
+        },
+        {
+          "pattern": "Assignments",
+          "name": "assignments",
+          "target": "assignments"
+        }
+      ],
+      "targets": {
+        "home": {
+          "id": "home",
+          "name": "Assets"
+        },
+        "assetDetails": {
+          "id": "assetDetails",
+          "name": "AssetDetails"
+        },
+        "employees": {
+          "id": "employees",
+          "name": "Employees"
+        },
+        "employeeDetails": {
+          "id": "employeeDetails",
+          "name": "EmployeeDetails"
+        },
+        "categories": {
+          "id": "categories",
+          "name": "Categories"
+        },
+        "assignments": {
+          "id": "assignments",
+          "name": "Assignments"
+        }
+      }
+    },
+    "config": {
+      "launchpadUrl": ""
+    }
+  }
+}

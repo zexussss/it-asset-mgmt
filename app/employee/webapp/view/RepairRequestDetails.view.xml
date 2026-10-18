@@ -1,0 +1,65 @@
+<mvc:View controllerName="employee.controller.RepairRequestDetails"
+  xmlns:mvc="sap.ui.core.mvc" xmlns="sap.m" xmlns:core="sap.ui.core">
+
+  <Page showHeader="false" enableScrolling="true" class="itamPage"
+        busy="{ui>/busy}">
+    <content>
+      <VBox class="itamPageContent">
+
+        <core:Fragment fragmentName="common.fragment.PageHeader" type="XML" />
+
+        <Panel class="itamPanel">
+          <headerToolbar>
+            <OverflowToolbar class="itamPanelHeader">
+              <VBox>
+                <Title text="{i18n>requestDetails}" level="H3" class="itamPanelTitle" />
+                <Text text="{assetInventoryNumber} — {assetName}" class="itamPanelSubtitle" />
+              </VBox>
+              <ToolbarSpacer />
+              <ObjectStatus class="itamPill" text="{priority/name}"
+                state="{path: 'priority/criticality', formatter: '.formatter.critState'}" />
+              <ObjectStatus class="itamPill"
+                text="{status/name}"
+                state="{path: 'status/criticality', formatter: '.formatter.critState'}"
+                icon="{path: 'status/criticality', formatter: '.formatter.critIcon'}" />
+            </OverflowToolbar>
+          </headerToolbar>
+
+          <core:Fragment fragmentName="common.fragment.RepairRequestForm" type="XML" />
+        </Panel>
+
+        <Panel class="itamPanel">
+          <headerToolbar>
+            <OverflowToolbar class="itamPanelHeader">
+              <HBox alignItems="Center">
+                <Title text="{i18n>repairLog}" level="H3" class="itamPanelTitle" />
+                <Text text="{ui>/counts/repairLogs}" class="itamCountBadge" />
+              </HBox>
+              <ToolbarSpacer />
+            </OverflowToolbar>
+          </headerToolbar>
+
+          <Table class="itamTable" inset="false" noDataText="{i18n>noLog}"
+                 items="{ path: 'repairLogs', sorter: { path: 'logDate', descending: true } }">
+            <columns>
+              <Column width="11rem"><Text text="{i18n>logDate}" /></Column>
+              <Column width="9rem"><Text text="{i18n>actionType}" /></Column>
+              <Column><Text text="{i18n>note}" /></Column>
+            </columns>
+            <items>
+              <ColumnListItem vAlign="Middle">
+                <cells>
+                  <Text text="{logDate}"
+                        class="itamCellMuted" />
+                  <ObjectStatus class="itamPill" state="Information" text="{actionType}" />
+                  <Text text="{note}" />
+                </cells>
+              </ColumnListItem>
+            </items>
+          </Table>
+        </Panel>
+
+      </VBox>
+    </content>
+  </Page>
+</mvc:View>

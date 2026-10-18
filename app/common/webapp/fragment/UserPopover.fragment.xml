@@ -1,0 +1,25 @@
+<core:FragmentDefinition xmlns="sap.m" xmlns:core="sap.ui.core" xmlns:f="sap.f">
+
+
+  <Popover id="userPopover" placement="Bottom" contentWidth="19rem"
+           title="{i18n>profile}" class="itamUserPopover"
+           afterClose="onCloseUserPopover">
+    <content>
+      <VBox class="itamUserCard" alignItems="Center">
+        <Avatar displaySize="L" initials="{nav>/user/initials}" class="itamAvatar" />
+        <Title text="{nav>/user/displayName}" level="H4"
+               class="itamUserCardName" textAlign="Center" />
+        <Text text="{nav>/user/email}" class="itamCellMuted" textAlign="Center" />
+        <Text text="{nav>/user/department}" class="itamCellMuted"
+              visible="{= !!${nav>/user/department} }" textAlign="Center" />
+      </VBox>
+    </content>
+    <footer>
+      <OverflowToolbar>
+        <ToolbarSpacer />
+        <Button text="{i18n>logOut}" icon="sap-icon://log" type="Reject"
+                press="onLogout" />
+      </OverflowToolbar>
+    </footer>
+  </Popover>
+</core:FragmentDefinition>

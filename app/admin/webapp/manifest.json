@@ -1,0 +1,186 @@
+{
+  "sap.app": {
+    "id": "admin",
+    "type": "application",
+    "i18n": "i18n/i18n.properties",
+    "applicationVersion": {
+      "version": "1.0.0"
+    },
+    "title": "{{appTitle}}",
+    "description": "{{appDescription}}",
+    "dataSources": {
+      "mainService": {
+        "uri": "service/admin/",
+        "type": "OData",
+        "settings": {
+          "odataVersion": "4.0"
+        }
+      }
+    },
+    "crossNavigation": {
+      "inbounds": {
+        "ITAM-manageAssets": {
+          "semanticObject": "ITAM",
+          "action": "manageAssets",
+          "title": "Admin Portal",
+          "subTitle": "Assets, employees and requests",
+          "icon": "sap-icon://laptop",
+          "signature": {
+            "parameters": {},
+            "additionalParameters": "allowed"
+          }
+        }
+      }
+    }
+  },
+  "sap.cloud": {
+    "public": true,
+    "service": "itassetmgmt.service"
+  },
+  "sap.ui": {
+    "technology": "UI5",
+    "icons": {
+      "icon": "sap-icon://shields"
+    }
+  },
+  "sap.ui5": {
+    "rootView": {
+      "viewName": "admin.view.App",
+      "type": "XML",
+      "id": "app",
+      "async": true
+    },
+    "dependencies": {
+      "minUI5Version": "1.120.0",
+      "libs": {
+        "sap.ui.core": {},
+        "sap.m": {},
+        "sap.f": {},
+        "sap.tnt": {},
+        "sap.ui.layout": {}
+      }
+    },
+    "contentDensities": {
+      "compact": true,
+      "cozy": false
+    },
+    "resourceRoots": {
+      "common": "./common/"
+    },
+    "resources": {
+      "css": [
+        {
+          "uri": "common/css/cockpit.css"
+        }
+      ]
+    },
+    "models": {
+      "": {
+        "dataSource": "mainService",
+        "settings": {
+          "operationMode": "Server",
+          "autoExpandSelect": true,
+          "earlyRequests": true,
+          "updateGroupId": "employeeDraft"
+        }
+      },
+      "i18n": {
+        "type": "sap.ui.model.resource.ResourceModel",
+        "settings": {
+          "bundleName": "admin.i18n.i18n"
+        }
+      }
+    },
+    "routing": {
+      "config": {
+        "routerClass": "sap.m.routing.Router",
+        "type": "View",
+        "viewType": "XML",
+        "path": "admin.view",
+        "controlId": "app",
+        "controlAggregation": "pages",
+        "transition": "slide",
+        "async": true
+      },
+      "routes": [
+        {
+          "pattern": "",
+          "name": "home",
+          "target": "home"
+        },
+        {
+          "pattern": "RepairRequests",
+          "name": "repairRequests",
+          "target": "repairRequests"
+        },
+        {
+          "pattern": "RepairRequests({key})",
+          "name": "requestDetails",
+          "target": "requestDetails"
+        },
+        {
+          "pattern": "Assets",
+          "name": "assets",
+          "target": "assets"
+        },
+        {
+          "pattern": "Assets({key})",
+          "name": "assetDetails",
+          "target": "assetDetails"
+        },
+        {
+          "pattern": "Employees",
+          "name": "employees",
+          "target": "employees"
+        },
+        {
+          "pattern": "Employees({key})",
+          "name": "employeeDetails",
+          "target": "employeeDetails"
+        },
+        {
+          "pattern": "Statistics",
+          "name": "statistics",
+          "target": "statistics"
+        }
+      ],
+      "targets": {
+        "home": {
+          "id": "home",
+          "name": "Dashboard"
+        },
+        "repairRequests": {
+          "id": "repairRequests",
+          "name": "RepairRequests"
+        },
+        "requestDetails": {
+          "id": "requestDetails",
+          "name": "RequestDetails"
+        },
+        "assets": {
+          "id": "assets",
+          "name": "Assets"
+        },
+        "assetDetails": {
+          "id": "assetDetails",
+          "name": "AssetDetails"
+        },
+        "employees": {
+          "id": "employees",
+          "name": "Employees"
+        },
+        "statistics": {
+          "id": "statistics",
+          "name": "Statistics"
+        },
+        "employeeDetails": {
+          "id": "employeeDetails",
+          "name": "EmployeeDetails"
+        }
+      }
+    },
+    "config": {
+      "launchpadUrl": ""
+    }
+  }
+}

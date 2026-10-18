@@ -1,0 +1,63 @@
+<mvc:View controllerName="inventory.controller.Assignments"
+  xmlns:mvc="sap.ui.core.mvc" xmlns="sap.m" xmlns:core="sap.ui.core">
+
+  <Page showHeader="false" enableScrolling="true" class="itamPage">
+    <content>
+      <VBox class="itamPageContent">
+
+        <core:Fragment fragmentName="common.fragment.PageHeader" type="XML" />
+        <core:Fragment fragmentName="common.fragment.ListToolbar" type="XML" />
+
+        <Panel class="itamPanel">
+          <headerToolbar>
+            <OverflowToolbar class="itamPanelHeader">
+              <HBox alignItems="Center">
+                <Title text="{i18n>assignments}" level="H3" class="itamPanelTitle" />
+                <Text text="{ui>/count}" class="itamCountBadge"
+                      visible="{= ${ui>/count} !== null }" />
+              </HBox>
+              <ToolbarSpacer />
+              <Button icon="sap-icon://action-settings" type="Transparent"
+                      press="onPanelMenu" tooltip="{i18n>panelSettings}" />
+            </OverflowToolbar>
+          </headerToolbar>
+
+          <Table id="mainTable" class="itamTable" inset="false"
+                 growing="true" growingThreshold="20"
+                 updateFinished="onUpdateFinished"
+                 noDataText="{i18n>noData}"
+                 items="{
+                   path: '/AssetAssignments',
+                   parameters: { $count: true, $expand: 'asset,employee' },
+                   sorter: { path: 'assignedFrom', descending: true }
+                 }">
+            <columns>
+              <Column width="9rem"><Text text="{i18n>inventoryNumber}" /></Column>
+              <Column minScreenWidth="Tablet"><Text text="{i18n>name}" /></Column>
+              <Column minScreenWidth="Tablet"><Text text="{i18n>employee}" /></Column>
+              <Column><Text text="{i18n>department}" /></Column>
+              <Column><Text text="{i18n>assignedFrom}" /></Column>
+              <Column><Text text="{i18n>returnedOn}" /></Column>
+            </columns>
+            <items>
+              <ColumnListItem vAlign="Middle">
+                <cells>
+                  <Text text="{asset/inventoryNumber}" class="itamCellStrong" />
+                  <Text text="{asset/name}" />
+                  <Text text="{parts: [{path: 'employee/lastName'}, {path: 'employee/firstName'}],
+                                formatter: '.formatter.fullName'}" />
+                  <Text text="{employee/department}" class="itamCellMuted" />
+                  <Text text="{assignedFrom}"
+                        class="itamCellMuted" />
+                  <Text text="{returnedOn}"
+                        class="itamCellMuted" />
+                </cells>
+              </ColumnListItem>
+            </items>
+          </Table>
+        </Panel>
+
+      </VBox>
+    </content>
+  </Page>
+</mvc:View>

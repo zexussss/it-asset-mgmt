@@ -1,0 +1,53 @@
+<core:FragmentDefinition xmlns="sap.m" xmlns:core="sap.ui.core"
+  xmlns:form="sap.ui.layout.form">
+
+
+  <Dialog id="addAssetDialog" title="{i18n>addAsset}" contentWidth="34rem">
+    <content>
+      <form:SimpleForm layout="ResponsiveGridLayout" editable="true"
+                       class="sapUiMediumMargin" columnsXL="1" columnsL="1"
+                       columnsM="1" labelSpanXL="4" labelSpanL="4"
+                       labelSpanM="4" labelSpanS="12">
+        <Label text="{i18n>inventoryNumber}" />
+        <Text text="{dlg>/inventoryNumber}" class="itamCellMuted" />
+
+        <Label text="{i18n>name}" required="true" />
+        <Input id="assetName" value="{dlg>/name}" placeholder="{i18n>name}" />
+
+        <Label text="{i18n>category}" required="true" />
+        <ComboBox id="assetCategory" width="100%"
+                  selectedKey="{dlg>/category_code}"
+                  placeholder="{i18n>category}"
+                  items="{path: '/AssetCategories', templateShareable: true}">
+          <core:ListItem key="{code}" text="{name}" />
+        </ComboBox>
+
+        <Label text="{i18n>serialNumber}" />
+        <Input value="{dlg>/serialNumber}" placeholder="{i18n>serialNumber}" />
+
+        <Label text="{i18n>manufacturer}" />
+        <Input value="{dlg>/manufacturer}" placeholder="{i18n>manufacturer}" />
+
+        <Label text="{i18n>model}" />
+        <Input value="{dlg>/model}" placeholder="{i18n>model}" />
+
+        <Label text="{i18n>purchaseDate}" />
+        <DatePicker value="{dlg>/purchaseDate}" valueFormat="yyyy-MM-dd"
+                    placeholder="{i18n>purchaseDate}" />
+
+        <Label text="{i18n>warrantyEndDate}" />
+        <DatePicker value="{dlg>/warrantyEndDate}" valueFormat="yyyy-MM-dd"
+                    placeholder="{i18n>warrantyEndDate}" />
+
+        <Label text="{i18n>price}" />
+        <Input value="{dlg>/price}" type="Number" placeholder="{i18n>price}" />
+      </form:SimpleForm>
+    </content>
+    <beginButton>
+      <Button text="{i18n>create}" type="Emphasized" press="onConfirmCreate" />
+    </beginButton>
+    <endButton>
+      <Button text="{i18n>cancel}" press="onCancelCreate" />
+    </endButton>
+  </Dialog>
+</core:FragmentDefinition>

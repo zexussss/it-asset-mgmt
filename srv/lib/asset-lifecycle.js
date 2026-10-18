@@ -1,17 +1,12 @@
 const cds = require('@sap/cds');
 
-/**
- * Shared Assets lifecycle behavior, used by every service that exposes
- * a writable/full "Assets" entity projection (InventoryService, AdminService).
- * Keep this in one place so the rules below stay identical everywhere
- * an Asset can be read or changed:
- *   - averageRepairDays is computed on read
- *   - a warranty warning is shown on create/update
- *   - decommissioning an asset frees it up and closes its open assignment
- */
 module.exports = function registerAssetLifecycleHandlers(srv) {
   const { SELECT, UPDATE } = cds.ql;
-  const { Assets, AssetAssignments } = srv.entities;
+  const { Assets } = srv.entities;
+
+
+
+  const { AssetAssignment } = cds.entities('itam');
 
   srv.after('READ', 'Assets', async (assets) => {
     const list = Array.isArray(assets) ? assets : [assets];
@@ -48,8 +43,10 @@ module.exports = function registerAssetLifecycleHandlers(srv) {
     req.data.assignedTo_ID = null;
 
     const today = new Date().toISOString().slice(0, 10);
-    await UPDATE(AssetAssignments)
+    const assetID = req.data.ID || (req.params && req.params[0] && req.params[0].ID);
+
+    await UPDATE(AssetAssignment)
       .set({ returnedOn: today })
-      .where({ asset_ID: req.data.ID, returnedOn: null });
+      .where({ asset_ID: assetID, returnedOn: null });
   });
 };

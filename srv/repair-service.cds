@@ -1,24 +1,65 @@
 using {itam as db} from '../db/schema';
 
-
 @requires: [
     'RepairTechnician',
     'Admin'
 ]
-service RepairService @(path: '/repair') {
+service RepairService @(path: '/service/repair') {
+
+
+    @readonly
+    entity Me {
+        key id         : String;
+            firstName  : String;
+            lastName   : String;
+            email      : String;
+            department : String;
+    }
 
     @odata.draft.enabled
+    @Capabilities.DeleteRestrictions.Deletable: false
     entity RepairRequests            as
         projection on db.RepairRequest {
             *,
             asset.inventoryNumber as assetInventoryNumber : String,
-            asset.name            as assetName            : String
+            asset.name            as assetName            : String,
+
+
+
+            virtual null as canStartRepair    : Boolean,
+            virtual null as canCompleteRepair : Boolean,
+            virtual null as canRejectRepair   : Boolean,
+            virtual null as canAddLog         : Boolean
         }
         actions {
-            action startRepair(technician: String)        returns RepairRequests;
+            @Core.OperationAvailable: canStartRepair
+            action startRepair()                           returns RepairRequests;
+
+            @Core.OperationAvailable: canCompleteRepair
             action completeRepair(resolutionNote: String) returns RepairRequests;
+
+            @Core.OperationAvailable: canRejectRepair
             action rejectRepair(reason: String)           returns RepairRequests;
+
+
+
+
+
+            @Core.OperationAvailable: canAddLog
+            action addLog(note: String)                   returns RepairRequests;
         };
+
+
+
+    @readonly
+    annotate RepairRequests with @cds.search: {
+        description,
+        technician,
+        assetInventoryNumber,
+        assetName,
+        requestedBy.firstName,
+        requestedBy.lastName
+    };
 
     entity RepairLogs                as projection on db.RepairLog;
 

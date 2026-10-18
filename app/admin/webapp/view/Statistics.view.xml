@@ -1,0 +1,102 @@
+<mvc:View controllerName="admin.controller.Statistics"
+  xmlns:mvc="sap.ui.core.mvc" xmlns="sap.m" xmlns:core="sap.ui.core">
+
+  <Page showHeader="false" enableScrolling="true" class="itamPage" busy="{ui>/busy}">
+    <content>
+      <VBox class="itamPageContent">
+
+        <core:Fragment fragmentName="common.fragment.PageHeader" type="XML" />
+
+
+        <HBox class="itamFilterBar" width="100%"
+              justifyContent="SpaceBetween" alignItems="End" wrap="Wrap">
+
+          <HBox alignItems="End" wrap="Wrap">
+            <VBox class="itamFilterField itamMultiFilter">
+              <Label text="{i18n>technicians}" labelFor="technicianSelect" />
+              <MultiComboBox id="technicianSelect" width="22rem"
+                             placeholder="{i18n>allTechnicians}"
+                             selectedKeys="{ui>/selectedTechnicians}"
+                             items="{ui>/technicianItems}">
+                <core:Item key="{ui>key}" text="{ui>text}" />
+              </MultiComboBox>
+            </VBox>
+
+            <VBox class="itamFilterField sapUiSmallMarginBegin">
+              <Label text="{i18n>completionPeriod}" />
+              <HBox alignItems="Center">
+                <DatePicker value="{ui>/dateFrom}" valueFormat="yyyy-MM-dd"
+                            width="9.5rem" placeholder="{i18n>dateFrom}" />
+                <Text text="–" class="sapUiTinyMarginBeginEnd" />
+                <DatePicker value="{ui>/dateTo}" valueFormat="yyyy-MM-dd"
+                            width="9.5rem" placeholder="{i18n>dateTo}" />
+              </HBox>
+            </VBox>
+          </HBox>
+
+          <HBox alignItems="Center" class="sapUiSmallMarginBegin">
+            <Button text="{i18n>apply}" type="Emphasized" press="onApply"
+                    class="sapUiTinyMarginEnd" />
+            <Button icon="sap-icon://clear-filter" type="Transparent"
+                    tooltip="{i18n>resetFilters}" press="onReset" />
+          </HBox>
+        </HBox>
+
+
+        <HBox class="itamStatsRow" width="100%" wrap="Wrap">
+
+          <Panel class="itamPanel itamStatsChartCard">
+            <headerToolbar>
+              <OverflowToolbar class="itamPanelHeader">
+                <VBox>
+                  <Title text="{i18n>completedRequests}" level="H3" class="itamPanelTitle" />
+                  <Text text="{i18n>completedRequestsSub}" class="itamPanelSubtitle" />
+                </VBox>
+              </OverflowToolbar>
+            </headerToolbar>
+            <core:HTML content="{ui>/donutHtml}" class="itamStatsChart" />
+          </Panel>
+
+          <Panel class="itamPanel itamStatsDetailCard">
+            <headerToolbar>
+              <OverflowToolbar class="itamPanelHeader">
+                <VBox>
+                  <Title text="{i18n>technicianDetails}" level="H3" class="itamPanelTitle" />
+                  <Text text="{ui>/statsSummary}" class="itamPanelSubtitle" />
+                </VBox>
+                <ToolbarSpacer />
+                <Button icon="sap-icon://refresh" type="Transparent"
+                        tooltip="{i18n>refresh}" press="onApply" />
+              </OverflowToolbar>
+            </headerToolbar>
+
+            <Table class="itamTable" inset="false" noDataText="{i18n>noData}"
+                   items="{ui>/statsRows}">
+              <columns>
+                <Column><Text text="{i18n>technician}" /></Column>
+                <Column hAlign="End"><Text text="{i18n>completedRequests}" /></Column>
+                <Column hAlign="End"><Text text="{i18n>averageResolution}" /></Column>
+                <Column hAlign="End"><Text text="{i18n>totalRequests}" /></Column>
+              </columns>
+              <items>
+                <ColumnListItem vAlign="Middle">
+                  <cells>
+                    <HBox alignItems="Center">
+                      <core:Icon src="sap-icon://employee" class="sapUiTinyMarginEnd" />
+                      <Text text="{ui>technician}" class="itamCellStrong" />
+                    </HBox>
+                    <ObjectStatus class="itamPill" state="{ui>completedState}" text="{ui>completed}" />
+                    <Text text="{ui>avgDaysText}" class="itamCellMuted" />
+                    <Text text="{ui>total}" class="itamCellMuted" />
+                  </cells>
+                </ColumnListItem>
+              </items>
+            </Table>
+          </Panel>
+
+        </HBox>
+
+      </VBox>
+    </content>
+  </Page>
+</mvc:View>

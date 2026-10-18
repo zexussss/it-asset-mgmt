@@ -1,15 +1,17 @@
 _schema-version: 3.3.0
 ID: it-asset-mgmt
 version: 1.0.0
-description: "A simple CAP project."
+description: "IT Asset Management"
 parameters:
   enable-parallel-deployments: true
+
 build-parameters:
   before-all:
     - builder: custom
       commands:
         - npm ci
         - npx cds build --production
+
 modules:
   - name: it-asset-mgmt-srv
     type: nodejs
@@ -17,15 +19,14 @@ modules:
     parameters:
       instances: 1
       buildpack: nodejs_buildpack
-    build-parameters:
-      builder: npm-ci
     provides:
-      - name: srv-api # required by consumers of CAP services (e.g. approuter)
+      - name: srv-api
         properties:
           srv-url: ${default-url}
     requires:
       - name: it-asset-mgmt-auth
       - name: it-asset-mgmt-db
+      - name: html5-apps-repo-rt
 
   - name: it-asset-mgmt-db-deployer
     type: hdb
@@ -34,7 +35,133 @@ modules:
       buildpack: nodejs_buildpack
     requires:
       - name: it-asset-mgmt-db
-  - name: it-asset-mgmt
+
+  - name: employee
+    type: html5
+    path: app/employee
+    build-parameters:
+      builder: custom
+      commands:
+        - rm -rf webapp/common
+        - mkdir -p webapp
+        - cp -R ../common/webapp webapp/common
+        - npm install --no-audit --no-fund
+        - npm run build
+        - python3 -c "import shutil; shutil.make_archive('employee', 'zip', 'dist')"
+      ignore: ["node_modules/"]
+      supported-platforms: []
+
+  - name: inventory
+    type: html5
+    path: app/inventory
+    build-parameters:
+      builder: custom
+      commands:
+        - rm -rf webapp/common
+        - mkdir -p webapp
+        - cp -R ../common/webapp webapp/common
+        - npm install --no-audit --no-fund
+        - npm run build
+        - python3 -c "import shutil; shutil.make_archive('inventory', 'zip', 'dist')"
+      ignore: ["node_modules/"]
+      supported-platforms: []
+
+  - name: repair
+    type: html5
+    path: app/repair
+    build-parameters:
+      builder: custom
+      commands:
+        - rm -rf webapp/common
+        - mkdir -p webapp
+        - cp -R ../common/webapp webapp/common
+        - npm install --no-audit --no-fund
+        - npm run build
+        - python3 -c "import shutil; shutil.make_archive('repair', 'zip', 'dist')"
+      ignore: ["node_modules/"]
+      supported-platforms: []
+
+  - name: admin
+    type: html5
+    path: app/admin
+    build-parameters:
+      builder: custom
+      commands:
+        - rm -rf webapp/common
+        - mkdir -p webapp
+        - cp -R ../common/webapp webapp/common
+        - npm install --no-audit --no-fund
+        - npm run build
+        - python3 -c "import shutil; shutil.make_archive('admin', 'zip', 'dist')"
+      ignore: ["node_modules/"]
+      supported-platforms: []
+
+  - name: it-asset-mgmt-app-content
+    type: com.sap.application.content
+    path: .
+    requires:
+      - name: srv-api
+      - name: it-asset-mgmt-repo-host
+        parameters:
+          content-target: true
+          config:
+            HTML5Runtime_enabled: true
+    build-parameters:
+      build-result: resources
+      requires:
+        - name: employee
+          artifacts: [employee.zip]
+          target-path: resources/
+        - name: inventory
+          artifacts: [inventory.zip]
+          target-path: resources/
+        - name: repair
+          artifacts: [repair.zip]
+          target-path: resources/
+        - name: admin
+          artifacts: [admin.zip]
+          target-path: resources/
+
+  - name: it-asset-mgmt-destinations
+    type: com.sap.application.content
+    requires:
+      - name: it-asset-mgmt-auth
+        parameters:
+          service-key:
+            name: it-asset-mgmt-auth-key
+      - name: it-asset-mgmt-repo-host
+        parameters:
+          service-key:
+            name: it-asset-mgmt-repo-host-key
+      - name: srv-api
+      - name: it-asset-mgmt-destination
+        parameters:
+          content-target: true
+    build-parameters:
+      no-source: true
+    parameters:
+      content:
+
+        subaccount:
+          existing_destinations_policy: update
+          destinations:
+
+            - Name: srv-api
+              URL: ~{srv-api/srv-url}
+              Authentication: OAuth2UserTokenExchange
+              TokenServiceInstanceName: it-asset-mgmt-auth
+              TokenServiceKeyName: it-asset-mgmt-auth-key
+            - Name: it-asset-mgmt-html5-repository
+              ServiceInstanceName: it-asset-mgmt-repo-host
+              ServiceKeyName: it-asset-mgmt-repo-host-key
+              sap.cloud.service: itassetmgmt.service
+            - Name: it-asset-mgmt-auth
+              Authentication: OAuth2UserTokenExchange
+              ServiceInstanceName: it-asset-mgmt-auth
+              ServiceKeyName: it-asset-mgmt-auth-key
+              sap.cloud.service: itassetmgmt.service
+
+  - name: it-asset-mgmt-approuter
     type: approuter.nodejs
     path: app/router
     parameters:
@@ -45,10 +172,12 @@ modules:
       - name: srv-api
         group: destinations
         properties:
-          name: srv-api # must be used in xs-app.json as well
+          name: srv-api
           url: ~{srv-url}
           forwardAuthToken: true
       - name: it-asset-mgmt-auth
+      - name: html5-apps-repo-rt
+      - name: it-asset-mgmt-destination
     provides:
       - name: app-api
         properties:
@@ -66,33 +195,49 @@ resources:
         xsappname: it-asset-mgmt-${org}-${space}
         tenant-mode: dedicated
         oauth2-configuration:
-          credential-types:
-            - "binding-secret"
-            - "x509"
+          credential-types: [binding-secret, x509]
           redirect-uris:
             - https://*~{app-api/app-uri}/**
         role-collections:
           - name: 'Admin (it-asset-mgmt ${org}-${space})'
             description: 'generated'
-            role-template-references:
-              - '$XSAPPNAME.Admin'
+            role-template-references: ['$XSAPPNAME.Admin']
           - name: 'Employee (it-asset-mgmt ${org}-${space})'
             description: 'generated'
-            role-template-references:
-              - '$XSAPPNAME.Employee'
+            role-template-references: ['$XSAPPNAME.Employee']
           - name: 'AssetManager (it-asset-mgmt ${org}-${space})'
             description: 'generated'
-            role-template-references:
-              - '$XSAPPNAME.AssetManager'
+            role-template-references: ['$XSAPPNAME.AssetManager']
           - name: 'RepairTechnician (it-asset-mgmt ${org}-${space})'
             description: 'generated'
-            role-template-references:
-              - '$XSAPPNAME.RepairTechnician'
+            role-template-references: ['$XSAPPNAME.RepairTechnician']
+      service-keys:
+        - name: it-asset-mgmt-auth-key
     requires:
       - name: app-api
+
   - name: it-asset-mgmt-db
     type: com.sap.xs.hdi-container
     parameters:
       service: hana
       service-plan: hdi-shared
-      auto-undeploy: true
+
+  - name: it-asset-mgmt-repo-host
+    type: org.cloudfoundry.managed-service
+    parameters:
+      service: html5-apps-repo
+      service-plan: app-host
+      service-keys:
+        - name: it-asset-mgmt-repo-host-key
+
+  - name: html5-apps-repo-rt
+    type: org.cloudfoundry.managed-service
+    parameters:
+      service: html5-apps-repo
+      service-plan: app-runtime
+
+  - name: it-asset-mgmt-destination
+    type: org.cloudfoundry.managed-service
+    parameters:
+      service: destination
+      service-plan: lite

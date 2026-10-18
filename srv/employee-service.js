@@ -1,18 +1,26 @@
 const cds = require('@sap/cds');
 const registerEnsureEmployee = require('./lib/ensure-employee');
+const registerMe = require('./lib/me');
 
 module.exports = cds.service.impl(async function () {
     const { SELECT, INSERT } = cds.ql;
     const { MyAssets, MyRepairRequests } = this.entities;
 
     registerEnsureEmployee(this);
+    registerMe(this);
 
-    this.before('READ', 'MyAssets', (req) => {
-        req.query.where([{ ref: ['assignedTo', 'email'] }, '=', { val: req.user.id }]);
+
+    async function currentEmployeeID(req) {
+        const employee = await SELECT.one.from('itam.Employee').columns('ID').where({ email: req.user.id });
+        return employee && employee.ID;
+    }
+
+    this.before('READ', 'MyAssets', async (req) => {
+        req.query.where({ assignedTo_ID: (await currentEmployeeID(req)) || null });
     });
 
-    this.before('READ', 'MyRepairRequests', (req) => {
-        req.query.where([{ ref: ['requestedBy', 'email'] }, '=', { val: req.user.id }]);
+    this.before('READ', 'MyRepairRequests', async (req) => {
+        req.query.where({ requestedBy_ID: (await currentEmployeeID(req)) || null });
     });
 
     this.on('createRepairRequest', 'MyAssets', async (req) => {

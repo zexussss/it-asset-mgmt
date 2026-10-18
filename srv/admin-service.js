@@ -1,13 +1,17 @@
 const cds = require('@sap/cds');
 const registerEnsureEmployee = require('./lib/ensure-employee');
+const registerMe = require('./lib/me');
 const registerAssetLifecycleHandlers = require('./lib/asset-lifecycle');
+const registerAutoNumbering = require('./lib/auto-numbering');
 const { calculateResolutionDays } = require('./lib/repair-utils');
 
 module.exports = cds.service.impl(async function () {
     const { SELECT } = cds.ql;
 
     registerEnsureEmployee(this);
+    registerMe(this);
     registerAssetLifecycleHandlers(this);
+    registerAutoNumbering(this, ['Assets', 'Employees']);
 
     this.before(['CREATE', 'UPDATE'], 'RepairRequests', async (req) => {
         const { resolvedDate } = req.data;

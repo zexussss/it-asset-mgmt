@@ -1,0 +1,99 @@
+<mvc:View controllerName="admin.controller.AssetDetails"
+  xmlns:mvc="sap.ui.core.mvc" xmlns="sap.m" xmlns:core="sap.ui.core">
+
+  <Page showHeader="false" enableScrolling="true" class="itamPage">
+    <content>
+      <VBox class="itamPageContent">
+
+        <core:Fragment fragmentName="common.fragment.PageHeader" type="XML" />
+
+        <Panel class="itamPanel">
+          <IconTabBar class="itamTabs" expanded="true" applyContentPadding="false">
+            <items>
+
+              <IconTabFilter text="{i18n>generalInfo}" key="general">
+                <core:Fragment fragmentName="common.fragment.AssetGeneralForm" type="XML" />
+              </IconTabFilter>
+
+              <IconTabFilter text="{i18n>assignmentHistory}" key="assignments"
+                             count="{ui>/counts/assignmentHistory}">
+                <Table class="itamTable" inset="false" noDataText="{i18n>noData}"
+                       items="{assignmentHistory}">
+                  <columns>
+                    <Column><Text text="{i18n>employee}" /></Column>
+                    <Column><Text text="{i18n>department}" /></Column>
+                    <Column><Text text="{i18n>assignedFrom}" /></Column>
+                    <Column><Text text="{i18n>returnedOn}" /></Column>
+                  </columns>
+                  <items>
+                    <ColumnListItem vAlign="Middle">
+                      <cells>
+                        <Text class="itamCellStrong"
+                              text="{parts: [{path: 'employee/lastName'}, {path: 'employee/firstName'}],
+                                      formatter: '.formatter.fullName'}" />
+                        <Text text="{employee/department}" class="itamCellMuted" />
+                        <Text text="{assignedFrom}" />
+                        <Text text="{returnedOn}" />
+                      </cells>
+                    </ColumnListItem>
+                  </items>
+                </Table>
+              </IconTabFilter>
+
+              <IconTabFilter text="{i18n>repairHistory}" key="repairs"
+                             count="{ui>/counts/repairRequests}">
+                <Table class="itamTable" inset="false" noDataText="{i18n>noData}"
+                       items="{repairRequests}">
+                  <columns>
+                    <Column><Text text="{i18n>description}" /></Column>
+                    <Column><Text text="{i18n>priority}" /></Column>
+                    <Column><Text text="{i18n>status}" /></Column>
+                    <Column><Text text="{i18n>createdDate}" /></Column>
+                  </columns>
+                  <items>
+                    <ColumnListItem vAlign="Middle">
+                      <cells>
+                        <Text text="{description}" maxLines="2" />
+                        <ObjectStatus class="itamPill" text="{priority/name}"
+                          state="{path: 'priority/criticality', formatter: '.formatter.critState'}" />
+                        <ObjectStatus class="itamPill" text="{status/name}"
+                          state="{path: 'status/criticality', formatter: '.formatter.critState'}"
+                          icon="{path: 'status/criticality', formatter: '.formatter.critIcon'}" />
+                        <Text text="{createdDate}"
+                              class="itamCellMuted" />
+                      </cells>
+                    </ColumnListItem>
+                  </items>
+                </Table>
+              </IconTabFilter>
+
+              <IconTabFilter text="{i18n>notes}" key="notes"
+                             count="{ui>/counts/notes}">
+                <Table class="itamTable" inset="false" noDataText="{i18n>noData}"
+                       items="{notes}">
+                  <columns>
+                    <Column><Text text="{i18n>note}" /></Column>
+                    <Column><Text text="{i18n>author}" /></Column>
+                    <Column><Text text="{i18n>createdAt}" /></Column>
+                  </columns>
+                  <items>
+                    <ColumnListItem vAlign="Middle">
+                      <cells>
+                        <Text text="{content}" />
+                        <Text text="{authorID}" class="itamCellMuted" />
+                        <Text text="{createdAt}"
+                              class="itamCellMuted" />
+                      </cells>
+                    </ColumnListItem>
+                  </items>
+                </Table>
+              </IconTabFilter>
+
+            </items>
+          </IconTabBar>
+        </Panel>
+
+      </VBox>
+    </content>
+  </Page>
+</mvc:View>

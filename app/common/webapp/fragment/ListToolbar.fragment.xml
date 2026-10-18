@@ -1,0 +1,60 @@
+<core:FragmentDefinition
+  xmlns="sap.m"
+  xmlns:core="sap.ui.core">
+
+
+  <HBox class="itamFilterBar" width="100%"
+        justifyContent="SpaceBetween" alignItems="End" wrap="Wrap">
+
+    <HBox alignItems="End" wrap="Wrap">
+      <VBox class="itamFilterField">
+        <SearchField class="itamSearchField" width="20rem"
+                     placeholder="{ui>/searchPlaceholder}"
+                     value="{ui>/searchQuery}"
+                     search="onSearch" />
+      </VBox>
+
+      <HBox alignItems="End" wrap="Wrap" items="{path: 'ui>/filters', templateShareable: true}">
+        <items>
+          <VBox class="itamFilterField sapUiSmallMarginBegin">
+            <Label text="{ui>label}" />
+
+            <HBox alignItems="Center" visible="{= ${ui>type} !== 'date' }">
+              <Select width="{ui>width}"
+                      selectedKey="{path: 'ui>selectedKey', mode: 'OneWay'}"
+                      change="onFilterChange" items="{path: 'ui>items', templateShareable: true}">
+                <core:Item key="{ui>key}" text="{ui>text}" />
+              </Select>
+            </HBox>
+
+            <HBox alignItems="Center" visible="{= ${ui>type} === 'date' }">
+              <DatePicker value="{ui>dateFrom}" valueFormat="yyyy-MM-dd"
+                          width="9.5rem" placeholder="{i18n>dateFrom}"
+                          change="onFilterDateChange" />
+              <Text text="–" class="sapUiTinyMarginBeginEnd" />
+              <DatePicker value="{ui>dateTo}" valueFormat="yyyy-MM-dd"
+                          width="9.5rem" placeholder="{i18n>dateTo}"
+                          change="onFilterDateChange" />
+            </HBox>
+          </VBox>
+        </items>
+      </HBox>
+    </HBox>
+
+    <HBox alignItems="Center" class="sapUiSmallMarginBegin">
+
+      <Button text="{ui>/createText}" icon="sap-icon://add" type="Emphasized"
+              visible="{ui>/createVisible}" press="onCreate"
+              class="sapUiTinyMarginEnd" />
+      <Button icon="sap-icon://sort" type="Transparent"
+              tooltip="{i18n>sort}" visible="{ui>/sortVisible}" press="onSortPress" />
+      <Button icon="sap-icon://clear-filter" type="Transparent"
+              tooltip="{i18n>resetFilters}" press="onResetFilters" />
+      <Button icon="sap-icon://refresh" type="Transparent"
+              tooltip="{i18n>refresh}" press="onRefresh" />
+      <Button icon="sap-icon://excel-attachment" type="Transparent"
+              tooltip="{i18n>export}" press="onExport" />
+    </HBox>
+
+  </HBox>
+</core:FragmentDefinition>

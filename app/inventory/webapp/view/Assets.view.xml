@@ -1,0 +1,94 @@
+<mvc:View controllerName="inventory.controller.Assets"
+  xmlns:mvc="sap.ui.core.mvc" xmlns="sap.m" xmlns:core="sap.ui.core">
+
+  <Page showHeader="false" enableScrolling="true" class="itamPage">
+    <content>
+      <VBox class="itamPageContent">
+
+        <core:Fragment fragmentName="common.fragment.PageHeader" type="XML" />
+        <core:Fragment fragmentName="common.fragment.ListToolbar" type="XML" />
+
+        <Panel class="itamPanel">
+          <headerToolbar>
+            <OverflowToolbar class="itamPanelHeader">
+              <HBox alignItems="Center">
+                <Title text="{i18n>assets}" level="H3" class="itamPanelTitle" />
+                <Text text="{ui>/count}" class="itamCountBadge"
+                      visible="{= ${ui>/count} !== null }" />
+              </HBox>
+              <ToolbarSpacer />
+              <Button icon="sap-icon://action-settings" type="Transparent"
+                      press="onPanelMenu" tooltip="{i18n>panelSettings}" />
+            </OverflowToolbar>
+          </headerToolbar>
+
+          <Table id="mainTable" class="itamTable" inset="false"
+                 mode="SingleSelectMaster" selectionChange="onSelect"
+                 growing="true" growingThreshold="20"
+                 updateFinished="onUpdateFinished"
+                 noDataText="{i18n>noData}"
+                 items="{
+                   path: '/Assets',
+                   parameters: {
+                     $count: true,
+                     $expand: 'category,availabilityStatus,repairStatus,assignedTo'
+                   }
+                 }">
+            <columns>
+              <Column width="9rem"><Text text="{i18n>inventoryNumber}" /></Column>
+              <Column minScreenWidth="Tablet"><Text text="{i18n>name}" /></Column>
+              <Column minScreenWidth="Desktop" demandPopin="true">
+                <Text text="{i18n>category}" />
+              </Column>
+              <Column><Text text="{i18n>availability}" /></Column>
+              <Column><Text text="{i18n>repairStatus}" /></Column>
+              <Column minScreenWidth="Desktop" demandPopin="true">
+                <Text text="{i18n>assignedTo}" />
+              </Column>
+              <Column width="6rem" hAlign="End"><Text text="{i18n>actions}" /></Column>
+            </columns>
+
+            <items>
+              <ColumnListItem type="Navigation" vAlign="Middle">
+                <cells>
+                  <Text text="{inventoryNumber}" class="itamCellStrong" />
+
+                  <HBox alignItems="Center">
+                    <core:Icon src="{path: 'category_code', formatter: '.formatter.iconForCategory'}"
+                               class="sapUiTinyMarginEnd" />
+                    <Text text="{name}" />
+                  </HBox>
+
+                  <Text text="{category/name}" class="itamCellMuted" />
+
+                  <ObjectStatus class="itamPill"
+                    text="{availabilityStatus/name}"
+                    state="{path: 'availabilityStatus/criticality', formatter: '.formatter.critState'}"
+                    icon="{path: 'availabilityStatus/criticality', formatter: '.formatter.critIcon'}" />
+
+                  <ObjectStatus class="itamPill"
+                    text="{repairStatus/name}"
+                    state="{path: 'repairStatus/criticality', formatter: '.formatter.critState'}"
+                    icon="{path: 'repairStatus/criticality', formatter: '.formatter.critIcon'}" />
+
+                  <Text text="{parts: [{path: 'assignedTo/lastName'}, {path: 'assignedTo/firstName'}],
+                                formatter: '.formatter.fullName'}" />
+
+                  <HBox justifyContent="End">
+                    <Button icon="sap-icon://employee" type="Transparent"
+                            enabled="{isAssignable}" tooltip="{i18n>assignAsset}"
+                            press="onAssign" />
+                    <Button icon="sap-icon://undo" type="Transparent"
+                            enabled="{isAssigned}" tooltip="{i18n>deassignAsset}"
+                            press="onDeassign" />
+                  </HBox>
+                </cells>
+              </ColumnListItem>
+            </items>
+          </Table>
+        </Panel>
+
+      </VBox>
+    </content>
+  </Page>
+</mvc:View>

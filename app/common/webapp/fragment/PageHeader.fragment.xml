@@ -1,0 +1,42 @@
+<core:FragmentDefinition
+  xmlns="sap.m"
+  xmlns:core="sap.ui.core">
+
+
+  <VBox class="itamStickyHeader" width="100%">
+
+    <HBox class="itamCrumbs" alignItems="Center" width="100%">
+      <Button icon="sap-icon://nav-back" tooltip="{i18n>back}" type="Transparent" press="onNavBack"
+              visible="{ui>/showBack}"
+              class="sapUiTinyMarginEnd" />
+      <Breadcrumbs currentLocationText="{ui>/currentCrumb}" links="{ui>/crumbs}">
+        <links>
+          <Link text="{ui>text}" press="onCrumbPress" />
+        </links>
+      </Breadcrumbs>
+    </HBox>
+
+    <HBox class="itamTitleRow" width="100%"
+          alignItems="Center" justifyContent="SpaceBetween">
+
+      <VBox justifyContent="Center">
+        <Title text="{ui>/title}" level="H2" class="itamPageTitle" />
+        <Text text="{ui>/subtitle}" class="itamPageSubtitle"
+              visible="{= !!${ui>/subtitle} }" />
+      </VBox>
+
+      <HBox alignItems="Center" items="{path: 'ui>/actions', templateShareable: true}">
+        <items>
+          <Button text="{ui>text}" icon="{ui>icon}" type="{ui>type}"
+                  enabled="{ui>enabled}" press="onBoundAction"
+                  class="sapUiTinyMarginBegin">
+            <customData>
+              <core:CustomData key="action" value="{ui>action}" />
+            </customData>
+          </Button>
+        </items>
+      </HBox>
+
+    </HBox>
+  </VBox>
+</core:FragmentDefinition>

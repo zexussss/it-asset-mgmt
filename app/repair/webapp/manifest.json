@@ -1,0 +1,132 @@
+{
+  "sap.app": {
+    "id": "repair",
+    "type": "application",
+    "i18n": "i18n/i18n.properties",
+    "applicationVersion": {
+      "version": "1.0.0"
+    },
+    "title": "{{appTitle}}",
+    "description": "{{appDescription}}",
+    "dataSources": {
+      "mainService": {
+        "uri": "service/repair/",
+        "type": "OData",
+        "settings": {
+          "odataVersion": "4.0"
+        }
+      }
+    },
+    "crossNavigation": {
+      "inbounds": {
+        "ITAM-repairQueue": {
+          "semanticObject": "ITAM",
+          "action": "repairQueue",
+          "title": "Service Portal",
+          "subTitle": "Repair queue",
+          "icon": "sap-icon://wrench",
+          "signature": {
+            "parameters": {},
+            "additionalParameters": "allowed"
+          }
+        }
+      }
+    }
+  },
+  "sap.cloud": {
+    "public": true,
+    "service": "itassetmgmt.service"
+  },
+  "sap.ui": {
+    "technology": "UI5",
+    "icons": {
+      "icon": "sap-icon://wrench"
+    }
+  },
+  "sap.ui5": {
+    "rootView": {
+      "viewName": "repair.view.App",
+      "type": "XML",
+      "id": "app",
+      "async": true
+    },
+    "dependencies": {
+      "minUI5Version": "1.120.0",
+      "libs": {
+        "sap.ui.core": {},
+        "sap.m": {},
+        "sap.f": {},
+        "sap.tnt": {},
+        "sap.ui.layout": {}
+      }
+    },
+    "contentDensities": {
+      "compact": true,
+      "cozy": false
+    },
+    "resourceRoots": {
+      "common": "./common/"
+    },
+    "resources": {
+      "css": [
+        {
+          "uri": "common/css/cockpit.css"
+        }
+      ]
+    },
+    "models": {
+      "": {
+        "dataSource": "mainService",
+        "settings": {
+          "operationMode": "Server",
+          "autoExpandSelect": true,
+          "earlyRequests": true,
+          "synchronizationMode": "None"
+        }
+      },
+      "i18n": {
+        "type": "sap.ui.model.resource.ResourceModel",
+        "settings": {
+          "bundleName": "repair.i18n.i18n"
+        }
+      }
+    },
+    "routing": {
+      "config": {
+        "routerClass": "sap.m.routing.Router",
+        "type": "View",
+        "viewType": "XML",
+        "path": "repair.view",
+        "controlId": "app",
+        "controlAggregation": "pages",
+        "transition": "slide",
+        "async": true
+      },
+      "routes": [
+        {
+          "pattern": "",
+          "name": "home",
+          "target": "home"
+        },
+        {
+          "pattern": "RepairRequests({key})",
+          "name": "requestDetails",
+          "target": "requestDetails"
+        }
+      ],
+      "targets": {
+        "home": {
+          "id": "home",
+          "name": "Queue"
+        },
+        "requestDetails": {
+          "id": "requestDetails",
+          "name": "RequestDetails"
+        }
+      }
+    },
+    "config": {
+      "launchpadUrl": ""
+    }
+  }
+}

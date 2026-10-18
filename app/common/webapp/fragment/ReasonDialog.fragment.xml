@@ -1,0 +1,19 @@
+<core:FragmentDefinition xmlns="sap.m" xmlns:core="sap.ui.core">
+
+
+  <Dialog id="reasonDialog" title="{dlg>/title}" contentWidth="32rem">
+    <content>
+      <VBox class="sapUiMediumMargin">
+        <Label text="{dlg>/label}" labelFor="reasonInput" />
+        <TextArea id="reasonInput" rows="4" width="100%"
+                  placeholder="{dlg>/placeholder}" class="sapUiTinyMarginTop" />
+      </VBox>
+    </content>
+    <beginButton>
+      <Button text="{i18n>confirm}" type="Emphasized" press="onReasonConfirm" />
+    </beginButton>
+    <endButton>
+      <Button text="{i18n>cancel}" press="onReasonCancel" />
+    </endButton>
+  </Dialog>
+</core:FragmentDefinition>

@@ -1,11 +1,40 @@
 using {itam as db} from '../db/schema';
 
-
 @requires: 'Admin'
-service AdminService @(path: '/admin') {
+service AdminService @(path: '/service/admin') {
+
+
+    @readonly
+    entity Me {
+        key id         : String;
+            firstName  : String;
+            lastName   : String;
+            email      : String;
+            department : String;
+    }
 
     @odata.draft.enabled
     entity Assets                    as projection on db.Asset;
+
+    annotate Assets with @cds.search: {
+        name,
+        inventoryNumber,
+        serialNumber,
+        manufacturer,
+        model,
+        category.name,
+        assignedTo.firstName,
+        assignedTo.lastName
+    };
+
+    annotate RepairRequests with @cds.search: {
+        description,
+        technician,
+        asset.inventoryNumber,
+        asset.name,
+        requestedBy.firstName,
+        requestedBy.lastName
+    };
 
     @odata.draft.enabled
     entity Employees                 as projection on db.Employee;
@@ -13,6 +42,7 @@ service AdminService @(path: '/admin') {
     @cds.redirection.target
     entity RepairRequests            as projection on db.RepairRequest;
 
+    @readonly
     entity RepairLogs                as projection on db.RepairLog;
     entity AssetAssignments          as projection on db.AssetAssignment;
     entity AssetNotes                as projection on db.AssetNote;

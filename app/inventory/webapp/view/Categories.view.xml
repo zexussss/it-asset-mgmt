@@ -1,0 +1,52 @@
+<mvc:View controllerName="inventory.controller.Categories"
+  xmlns:mvc="sap.ui.core.mvc" xmlns="sap.m" xmlns:core="sap.ui.core">
+
+  <Page showHeader="false" enableScrolling="true" class="itamPage">
+    <content>
+      <VBox class="itamPageContent">
+
+        <core:Fragment fragmentName="common.fragment.PageHeader" type="XML" />
+        <core:Fragment fragmentName="common.fragment.ListToolbar" type="XML" />
+
+        <Panel class="itamPanel">
+          <headerToolbar>
+            <OverflowToolbar class="itamPanelHeader">
+              <HBox alignItems="Center">
+                <Title text="{i18n>categories}" level="H3" class="itamPanelTitle" />
+                <Text text="{ui>/count}" class="itamCountBadge"
+                      visible="{= ${ui>/count} !== null }" />
+              </HBox>
+              <ToolbarSpacer />
+              <Button icon="sap-icon://action-settings" type="Transparent"
+                      press="onPanelMenu" tooltip="{i18n>panelSettings}" />
+            </OverflowToolbar>
+          </headerToolbar>
+
+          <Table id="mainTable" class="itamTable" inset="false"
+                 growing="true" growingThreshold="20"
+                 updateFinished="onUpdateFinished"
+                 noDataText="{i18n>noData}"
+                 items="{ path: '/AssetCategories', parameters: { $count: true } }">
+            <columns>
+              <Column width="10rem"><Text text="{i18n>code}" /></Column>
+              <Column><Text text="{i18n>name}" /></Column>
+            </columns>
+            <items>
+              <ColumnListItem vAlign="Middle">
+                <cells>
+                  <Text text="{code}" class="itamCellStrong" />
+                  <HBox alignItems="Center">
+                    <core:Icon src="{path: 'code', formatter: '.formatter.iconForCategory'}"
+                               class="sapUiTinyMarginEnd" />
+                    <Text text="{name}" />
+                  </HBox>
+                </cells>
+              </ColumnListItem>
+            </items>
+          </Table>
+        </Panel>
+
+      </VBox>
+    </content>
+  </Page>
+</mvc:View>

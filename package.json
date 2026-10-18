@@ -15,56 +15,29 @@
     "deploy": "cds deploy"
   },
   "cds": {
-    "fiori": {
-      "preview": true
-    },
+    "fiori": { "preview": true },
     "requires": {
-      "db": {
-        "kind": "sql"
-      },
+      "db": { "kind": "sql" },
       "[production]": {
         "auth": "xsuaa",
-        "db": {
-          "kind": "hana-cloud"
-        }
+        "db": { "kind": "hana-cloud" }
       },
       "[development]": {
         "auth": {
           "kind": "mocked",
           "users": {
-            "admin": {
-              "password": "admin",
-              "roles": [
-                "Admin"
-              ]
-            },
-            "technician": {
-              "password": "technician",
-              "roles": [
-                "RepairTechnician"
-              ]
-            },
-            "manager": {
-              "password": "manager",
-              "roles": [
-                "AssetManager"
-              ]
-            },
-            "alice@company.com": {
-              "password": "alice",
-              "roles": [
-                "Employee"
-              ]
-            }
+            "admin":             { "password": "admin",      "roles": ["Admin"] },
+            "technician":        { "password": "technician", "roles": ["RepairTechnician"] },
+            "manager":           { "password": "manager",    "roles": ["AssetManager"] },
+            "alice@company.com": { "password": "alice",      "roles": ["Employee"] }
           }
         },
         "db": {
           "kind": "sqlite",
-          "credentials": {
-            "url": ":memory:"
-          }
+          "credentials": { "url": ":memory:" }
         }
       }
     }
-  }
+  },
+  "engines": { "node": "^24" }
 }

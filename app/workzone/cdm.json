@@ -1,0 +1,120 @@
+{
+  "_version": "3.0.0",
+  "identification": {
+    "title": "IT Asset Management",
+    "id": "it-asset-mgmt-workzone",
+    "entityType": "bundle"
+  },
+  "payload": {
+    "catalogs": [
+      {
+        "_version": "3.0.0",
+        "identification": {
+          "id": "it-asset-mgmt-catalog",
+          "title": "IT Asset Management",
+          "entityType": "catalog"
+        },
+        "payload": {
+          "viz": [
+            {
+              "appId": "admin",
+              "vizId": "ITAM-manageAssets"
+            },
+            {
+              "appId": "inventory",
+              "vizId": "ITAM-manageInventory"
+            },
+            {
+              "appId": "repair",
+              "vizId": "ITAM-repairQueue"
+            },
+            {
+              "appId": "employee",
+              "vizId": "ITAM-myAssets"
+            }
+          ]
+        }
+      }
+    ],
+    "groups": [
+      {
+        "_version": "3.0.0",
+        "identification": {
+          "id": "it-asset-mgmt-group",
+          "title": "IT Asset Management",
+          "entityType": "group"
+        },
+        "payload": {
+          "viz": [
+            {
+              "id": "it-asset-mgmt-admin-001",
+              "appId": "admin",
+              "vizId": "ITAM-manageAssets"
+            },
+            {
+              "id": "it-asset-mgmt-inventory-001",
+              "appId": "inventory",
+              "vizId": "ITAM-manageInventory"
+            },
+            {
+              "id": "it-asset-mgmt-repair-001",
+              "appId": "repair",
+              "vizId": "ITAM-repairQueue"
+            },
+            {
+              "id": "it-asset-mgmt-employee-001",
+              "appId": "employee",
+              "vizId": "ITAM-myAssets"
+            }
+          ]
+        }
+      }
+    ],
+    "sites": [
+      {
+        "_version": "3.0.0",
+        "identification": {
+          "id": "it-asset-mgmt-site",
+          "entityType": "site",
+          "title": "IT Asset Management",
+          "description": "IT Asset Management"
+        },
+        "payload": {
+          "config": {
+            "ushellConfig": {
+              "renderers": {
+                "fiori2": {
+                  "componentData": {
+                    "config": {
+                      "applications": {
+                        "Shell-home": {}
+                      },
+                      "enableSearch": true,
+                      "enablePersonalization": true,
+                      "enableSetTheme": true,
+                      "enableSetLanguage": true
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "groupsOrder": [
+            "it-asset-mgmt-group"
+          ],
+          "sap.cloud.portal": {
+            "config": {
+              "theme.id": "sap_horizon",
+              "theme.active": [
+                "sap_horizon",
+                "sap_horizon_dark",
+                "sap_horizon_hcw",
+                "sap_horizon_hcb"
+              ]
+            }
+          }
+        }
+      }
+    ]
+  }
+}

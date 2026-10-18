@@ -1,11 +1,20 @@
 using {itam as db} from '../db/schema';
 
-
 @requires: [
     'Employee',
     'Admin'
 ]
-service EmployeeService @(path: '/employee') {
+service EmployeeService @(path: '/service/employee') {
+
+
+    @readonly
+    entity Me {
+        key id         : String;
+            firstName  : String;
+            lastName   : String;
+            email      : String;
+            department : String;
+    }
 
     @readonly
     entity MyAssets              as
@@ -24,6 +33,30 @@ service EmployeeService @(path: '/employee') {
             *,
             asset.inventoryNumber as assetInventoryNumber : String,
             asset.name            as assetName            : String
+        };
+
+    annotate MyAssets with @cds.search: {
+        name,
+        inventoryNumber,
+        serialNumber,
+        manufacturer,
+        model,
+        category.name
+    };
+
+    annotate MyRepairRequests with @cds.search: {
+        description,
+        assetInventoryNumber,
+        assetName
+    };
+
+
+    @readonly
+    entity Employees             as
+        projection on db.Employee {
+            key ID,
+                firstName,
+                lastName
         };
 
     @readonly

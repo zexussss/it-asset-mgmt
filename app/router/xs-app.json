@@ -1,33 +1,18 @@
 {
-  "welcomeFile": "/index.html",
+  "welcomeFile": "/employee/index.html",
   "authenticationMethod": "route",
-  "logout": {
-    "logoutEndpoint": "/do/logout",
-    "logoutPage": "/index.html"
-  },
   "routes": [
     {
-      "source": "^/user-api/currentUser$",
-      "target": "/currentUser",
-      "service": "sap-approuter-userapi",
-      "authenticationType": "xsuaa"
-    },
-    {
-      "source": "^/\\$fiori-preview/(.*)$",
-      "target": "/$fiori-preview/$1",
+      "source": "^/service/(.*)$",
+      "target": "/service/$1",
       "destination": "srv-api",
-      "authenticationType": "xsuaa"
-    },
-    {
-      "source": "^/(admin|repair|inventory|employee)/(.*)$",
-      "target": "/$1/$2",
-      "destination": "srv-api",
-      "authenticationType": "xsuaa"
+      "authenticationType": "xsuaa",
+      "csrfProtection": false
     },
     {
       "source": "^(.*)$",
       "target": "$1",
-      "localDir": "webapp",
+      "destination": "html5-apps-repo-rt",
       "authenticationType": "xsuaa"
     }
   ]

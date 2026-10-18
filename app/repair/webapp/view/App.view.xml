@@ -1,0 +1,67 @@
+<mvc:View controllerName="repair.controller.App"
+          xmlns:mvc="sap.ui.core.mvc"
+          xmlns="sap.m"
+          xmlns:core="sap.ui.core"
+          xmlns:tnt="sap.tnt"
+          displayBlock="true"
+          height="100%"
+          class="itamShell">
+
+  <tnt:ToolPage id="toolPage" sideExpanded="true">
+
+
+    <tnt:header>
+      <tnt:ToolHeader id="appHeader" class="itamShellBar">
+        <Button icon="sap-icon://menu2" type="Transparent" press="onToggleSideNav"
+                tooltip="{i18n>toggleNav}" />
+
+        <Button text="ITAM" type="Transparent" press="onBrandPress"
+                class="itamBrandBtn" tooltip="{nav>/brandTooltip}" />
+
+        <Title text="{nav>/appTitle}" level="H4" class="itamShellTitle" />
+        <Text text="{nav>/appSubtitle}" class="itamShellSubtitle" />
+
+        <ToolbarSpacer />
+
+        <Avatar initials="{nav>/user/initials}" displaySize="XS" press="onProfilePress"
+                class="itamAvatar" tooltip="{i18n>profile}" />
+      </tnt:ToolHeader>
+    </tnt:header>
+
+
+    <tnt:sideContent>
+      <tnt:SideNavigation id="sideNav" class="itamSideNav"
+                          selectedKey="{nav>/selectedKey}"
+                          itemSelect="onNavItemSelect">
+
+        <tnt:item>
+
+          <tnt:NavigationList items="{path: 'nav>/sections', templateShareable: true}">
+            <tnt:NavigationListItem text="{nav>text}" icon="{nav>icon}" key="{nav>key}"
+                                    enabled="{nav>enabled}" expanded="{nav>expanded}"
+                                    hasExpander="{nav>hasExpander}" items="{path: 'nav>items', templateShareable: true}">
+              <tnt:NavigationListItem text="{nav>text}" icon="{nav>icon}" key="{nav>key}"
+                                      enabled="{nav>enabled}" expanded="{nav>expanded}"
+                                      hasExpander="{nav>hasExpander}" items="{path: 'nav>items', templateShareable: true}">
+                <tnt:NavigationListItem text="{nav>text}" icon="{nav>icon}" key="{nav>key}" />
+              </tnt:NavigationListItem>
+            </tnt:NavigationListItem>
+          </tnt:NavigationList>
+        </tnt:item>
+
+        <tnt:fixedItem>
+          <tnt:NavigationList items="{path: 'nav>/footer', templateShareable: true}">
+            <tnt:NavigationListItem text="{nav>text}" icon="{nav>icon}" key="{nav>key}" />
+          </tnt:NavigationList>
+        </tnt:fixedItem>
+
+      </tnt:SideNavigation>
+    </tnt:sideContent>
+
+
+    <tnt:mainContents>
+      <App id="app" class="itamPage" />
+    </tnt:mainContents>
+
+  </tnt:ToolPage>
+</mvc:View>

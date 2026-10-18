@@ -1,0 +1,55 @@
+<core:FragmentDefinition
+  xmlns="sap.m"
+  xmlns:core="sap.ui.core"
+  xmlns:form="sap.ui.layout.form">
+
+  <form:SimpleForm editable="false" layout="ResponsiveGridLayout"
+                columnsXL="3" columnsL="2" columnsM="1"
+                labelSpanXL="2" labelSpanL="2" labelSpanM="3" labelSpanS="12"
+                class="itamDetailForm sapUiSmallMargin">
+
+    <Label text="{i18n>inventoryNumber}" />
+    <Text text="{inventoryNumber}" class="itamCellStrong" />
+
+    <Label text="{i18n>name}" />
+    <Text text="{name}" />
+
+    <Label text="{i18n>category}" />
+    <Text text="{category/name}" />
+
+    <Label text="{i18n>availability}" />
+    <ObjectStatus class="itamPill"
+      text="{availabilityStatus/name}"
+      state="{path: 'availabilityStatus/criticality', formatter: '.formatter.critState'}"
+      icon="{path: 'availabilityStatus/criticality', formatter: '.formatter.critIcon'}" />
+
+    <Label text="{i18n>repairStatus}" />
+    <ObjectStatus class="itamPill"
+      text="{repairStatus/name}"
+      state="{path: 'repairStatus/criticality', formatter: '.formatter.critState'}"
+      icon="{path: 'repairStatus/criticality', formatter: '.formatter.critIcon'}" />
+
+    <Label text="{i18n>serialNumber}" />
+    <Text text="{serialNumber}" />
+
+    <Label text="{i18n>manufacturer}" />
+    <Text text="{manufacturer}" />
+
+    <Label text="{i18n>model}" />
+    <Text text="{model}" />
+
+    <Label text="{i18n>purchaseDate}" />
+    <Text text="{purchaseDate}" />
+
+    <Label text="{i18n>warrantyEnd}" />
+    <Text text="{warrantyEndDate}" />
+
+    <Label text="{i18n>price}" />
+    <Text text="{path: 'price', formatter: '.formatter.price'}" />
+
+    <Label text="{i18n>assignedTo}" />
+    <Text text="{parts: [{path: 'assignedTo/lastName'}, {path: 'assignedTo/firstName'}],
+                    formatter: '.formatter.fullName'}" />
+
+  </form:SimpleForm>
+</core:FragmentDefinition>

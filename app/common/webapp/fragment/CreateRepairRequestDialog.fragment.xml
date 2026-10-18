@@ -1,0 +1,29 @@
+<core:FragmentDefinition xmlns="sap.m" xmlns:core="sap.ui.core">
+
+  <Dialog id="createRRDialog" title="{i18n>createRepairRequest}" contentWidth="32rem">
+    <content>
+      <VBox class="sapUiMediumMargin">
+        <Label text="{i18n>asset}" />
+        <Text text="{inventoryNumber} — {name}" class="itamCellStrong" />
+
+        <Label text="{i18n>description}" labelFor="rrDescription"
+               class="sapUiMediumMarginTop" />
+        <TextArea id="rrDescription" rows="4" width="100%"
+                  placeholder="{i18n>describeIssue}" class="sapUiTinyMarginTop" />
+
+        <Label text="{i18n>priority}" labelFor="rrPriority"
+               class="sapUiMediumMarginTop" />
+        <Select id="rrPriority" selectedKey="MEDIUM" width="100%"
+                items="{path: '/Priorities', templateShareable: true}">
+          <core:Item key="{code}" text="{name}" />
+        </Select>
+      </VBox>
+    </content>
+    <beginButton>
+      <Button text="{i18n>submit}" type="Emphasized" press="onConfirmCreate" />
+    </beginButton>
+    <endButton>
+      <Button text="{i18n>cancel}" press="onCancelCreate" />
+    </endButton>
+  </Dialog>
+</core:FragmentDefinition>

@@ -1,0 +1,27 @@
+<core:FragmentDefinition xmlns="sap.m" xmlns:core="sap.ui.core">
+
+  <Dialog id="assignDialog" title="{i18n>assign}" contentWidth="32rem">
+    <content>
+      <VBox class="sapUiMediumMargin">
+        <Label text="{i18n>asset}" />
+        <Text text="{inventoryNumber} — {name}" class="itamCellStrong" />
+
+        <Label text="{i18n>employee}" labelFor="employeeSelect"
+               class="sapUiMediumMarginTop" />
+        <ComboBox id="employeeSelect" width="100%"
+                  items="{path: '/Employees', templateShareable: true}"
+                  placeholder="{i18n>employee}">
+          <core:ListItem key="{ID}"
+                         text="{firstName} {lastName}"
+                         additionalText="{department}" />
+        </ComboBox>
+      </VBox>
+    </content>
+    <beginButton>
+      <Button text="{i18n>assign}" type="Emphasized" press="onConfirmAssign" />
+    </beginButton>
+    <endButton>
+      <Button text="{i18n>cancel}" press="onCancelAssign" />
+    </endButton>
+  </Dialog>
+</core:FragmentDefinition>

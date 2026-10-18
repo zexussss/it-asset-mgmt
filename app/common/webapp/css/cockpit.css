@@ -1,0 +1,649 @@
+
+
+:root,
+html[data-itam-theme="dark"] {
+  --itam-page-bg: #12171c;
+  --itam-surface: #1d232a;
+  --itam-surface-alt: #232c35;
+  --itam-border: #2e3742;
+  --itam-text: #eaecee;
+  --itam-muted: #8396a8;
+  --itam-selection: #1d2d3e;
+  --itam-brand: #0070f2;
+  --itam-highlight: #4db1ff;
+  --itam-shadow: 0 0.0625rem 0.25rem rgba(0, 0, 0, 0.45);
+  --itam-pill-success-bg: rgba(151, 221, 64, 0.16);
+  --itam-pill-success-fg: #97dd40;
+  --itam-pill-warning-bg: rgba(255, 223, 114, 0.16);
+  --itam-pill-warning-fg: #ffdf72;
+  --itam-pill-error-bg: rgba(250, 97, 97, 0.16);
+  --itam-pill-error-fg: #fa6161;
+  --itam-pill-info-bg: rgba(77, 177, 255, 0.16);
+  --itam-pill-info-fg: #4db1ff;
+  --itam-pill-neutral-bg: rgba(169, 180, 190, 0.14);
+  --itam-pill-neutral-fg: #c6ced6;
+}
+
+html[data-itam-theme="light"] {
+  --itam-page-bg: #f5f6f7;
+  --itam-surface: #ffffff;
+  --itam-surface-alt: #f2f4f6;
+  --itam-border: #e5e5e5;
+  --itam-text: #1d2d3e;
+  --itam-muted: #556b82;
+  --itam-selection: #ebf8ff;
+  --itam-brand: #0070f2;
+  --itam-highlight: #0064d9;
+  --itam-shadow: 0 0.0625rem 0.1875rem rgba(34, 53, 72, 0.12);
+  --itam-pill-success-bg: #f5fae5;
+  --itam-pill-success-fg: #256f3a;
+  --itam-pill-warning-bg: #fff8d6;
+  --itam-pill-warning-fg: #b44f00;
+  --itam-pill-error-bg: #ffeaf4;
+  --itam-pill-error-fg: #aa0808;
+  --itam-pill-info-bg: #e1f4ff;
+  --itam-pill-info-fg: #0064d9;
+  --itam-pill-neutral-bg: #eff1f2;
+  --itam-pill-neutral-fg: #556b82;
+}
+
+.itamShell {
+  height: 100%;
+}
+
+.itamShellBar {
+  border-bottom: 1px solid var(--itam-border);
+  box-shadow: none;
+}
+
+.itamBrandBtn {
+  margin: 0 0.75rem 0 0.25rem;
+  flex: 0 0 auto;
+}
+
+.itamBrandBtn .sapMBtnInner,
+.itamBrandBtn .sapMBtnInner:hover,
+.itamBrandBtn .sapMBtnInner:active,
+.itamBrandBtn .sapMBtnInner.sapMBtnHoverable:hover {
+  height: 2rem;
+  min-width: 3.5rem;
+  padding: 0 0.625rem;
+  border: none;
+  border-radius: 0.375rem;
+  background-image: linear-gradient(135deg, #0a6ed1 0%, #1b90ff 45%, #00b8f0 100%);
+  background-color: transparent;
+  box-shadow: none;
+}
+
+.itamBrandBtn .sapMBtnContent {
+  color: #ffffff;
+  font-weight: 700;
+  font-size: 0.8125rem;
+  letter-spacing: 0.14em;
+  font-style: italic;
+  line-height: 2rem;
+  text-shadow: none;
+}
+
+.itamShellTitle .sapMTitle,
+.itamShellTitle {
+  color: var(--itam-text);
+  font-weight: 600;
+}
+
+.itamShellSubtitle .sapMText,
+.itamShellSubtitle {
+  color: var(--itam-muted);
+  font-size: 0.8125rem;
+  padding-left: 0.625rem;
+  margin-left: 0.625rem;
+  border-left: 1px solid var(--itam-border);
+  line-height: 1.1;
+}
+
+.itamAvatar .sapFAvatar {
+  background: var(--itam-brand);
+  color: #ffffff;
+  font-weight: 600;
+}
+
+.itamSideNav {
+  background: var(--itam-surface);
+  border-right: 1px solid var(--itam-border);
+}
+
+.itamSideNav .sapTntSideNavigation,
+.itamSideNav .sapTntNavLI,
+.itamSideNav .sapTntSideNavigation,
+.itamSideNav .sapTntNL {
+  background: transparent;
+}
+
+.itamSideNav .sapTntNavLI,
+.itamSideNav .sapTntNL {
+  padding: 0.5rem 0;
+}
+
+.itamSideNav .sapTntNavLI .sapTntNavLISelectionIndicator,
+.itamSideNav .sapTntNL .sapTntNLSelectionIndicator {
+  display: none !important;
+}
+
+.itamSideNav .sapTntNavLIItem,
+.itamSideNav .sapTntNLI {
+  border-radius: 0.375rem;
+  margin: 0.0625rem 0.375rem;
+  width: auto;
+  position: relative;
+  box-sizing: border-box;
+}
+
+.itamSideNav .sapTntNavLIText,
+.itamSideNav .sapTntNLIText {
+  font-size: 0.875rem;
+  color: var(--itam-text);
+}
+
+.itamSideNav .sapTntNavLIItemDisabled,
+.itamSideNav .sapTntNLIDisabled {
+  cursor: default;
+  min-height: 1.75rem;
+  margin-top: 0.625rem;
+}
+
+.itamSideNav .sapTntNavLIItemDisabled .sapTntNavLIText,
+.itamSideNav .sapTntNLIDisabled .sapTntNLIText {
+  font-size: 0.6875rem;
+  font-weight: 700;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--itam-muted);
+}
+
+.itamSideNav .sapTntNavLIItemDisabled .sapTntNavLIText,
+.itamSideNav .sapTntNavLIItemDisabled .sapTntNavLIGroupIcon,
+.itamSideNav .sapTntNLIDisabled .sapTntNLIText,
+.itamSideNav .sapTntNLIDisabled .sapTntNLIIcon {
+  opacity: 1;
+}
+
+.itamSideNav .sapTntNavLIItemSelected,
+.itamSideNav .sapTntNLISelected {
+  background: var(--itam-selection);
+}
+
+.itamSideNav .sapTntNavLIItemSelected::before,
+.itamSideNav .sapTntNLISelected::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 0.375rem;
+  bottom: 0.375rem;
+  width: 0.1875rem;
+  border-radius: 0 0.125rem 0.125rem 0;
+  background: var(--itam-brand);
+}
+
+.itamSideNav .sapTntNavLIItemSelected .sapTntNavLIText,
+.itamSideNav .sapTntNLISelected .sapTntNLIText {
+  font-weight: 600;
+}
+
+.itamSideNav .sapTntNavLIGroupItem .sapTntNavLIText {
+  font-size: 0.8125rem;
+  color: var(--itam-muted);
+}
+
+.itamSideNavFooter {
+  padding: 0.5rem 0.75rem 0.75rem 0.75rem;
+  border-top: 1px solid var(--itam-border);
+}
+
+.itamSideNavFooter .sapMText {
+  color: var(--itam-muted);
+  font-size: 0.6875rem;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+}
+
+.itamPage {
+  background: var(--itam-page-bg);
+}
+
+.itamPageContent {
+  padding: 1.25rem 2rem 3rem 2rem;
+  box-sizing: border-box;
+}
+
+.itamCrumbs {
+  padding-bottom: 0.25rem;
+}
+
+.itamCrumbs .sapMLnk,
+.itamCrumbs .sapMBreadcrumbsCurrentLocation .sapMText {
+  font-size: 0.8125rem;
+}
+
+.itamCrumbs .sapMLnk {
+  color: var(--itam-muted);
+}
+
+.itamCrumbs .sapMBreadcrumbsCurrentLocation .sapMText {
+  color: var(--itam-text);
+}
+
+.itamTitleRow {
+  padding: 0.25rem 0 1rem 0;
+  gap: 0.5rem;
+}
+
+.itamPageTitle .sapMTitle,
+.itamPageTitle {
+  font-size: 1.5rem;
+  font-weight: 700;
+  line-height: 1.9rem;
+  color: var(--itam-text);
+}
+
+.itamPageSubtitle .sapMText,
+.itamPageSubtitle {
+  color: var(--itam-muted);
+  font-size: 0.8125rem;
+  padding-top: 0.25rem;
+}
+
+.itamCountBadge {
+  display: inline-flex;
+  align-items: center;
+  height: 1.375rem;
+  padding: 0 0.5rem;
+  margin-left: 0.625rem;
+  border-radius: 0.6875rem;
+  background: var(--itam-selection);
+  color: var(--itam-muted);
+  font-size: 0.75rem;
+  font-weight: 600;
+}
+
+.itamFilterBar {
+  padding: 0.25rem 0 1.25rem 0;
+  gap: 0.5rem;
+  align-items: flex-end;
+  flex-wrap: wrap;
+}
+
+.itamFilterField .sapMLabel {
+  font-size: 0.75rem;
+  color: var(--itam-muted);
+  margin-bottom: 0.125rem;
+}
+
+.itamSearchField {
+  min-width: 18rem;
+}
+
+.itamPanel {
+  background: var(--itam-surface);
+  border: 1px solid var(--itam-border);
+  border-radius: 0.75rem;
+  box-shadow: var(--itam-shadow);
+  overflow: hidden;
+  margin-bottom: 1.5rem;
+  height: auto;
+}
+
+.itamPanel > header {
+  border-bottom: 1px solid var(--itam-border);
+}
+
+.itamPanelHeader {
+  padding: 0.875rem 1.25rem;
+  background: transparent;
+
+  height: auto !important;
+  min-height: 3rem;
+  overflow: visible;
+}
+
+.itamPanelHeader > .sapMTB,
+.itamPanel > header .sapMTB {
+  height: auto !important;
+  min-height: 0 !important;
+}
+
+.itamPanelHeader .sapMTBStandard {
+  border-bottom: none;
+}
+
+.itamPanelTitle .sapMTitle,
+.itamPanelTitle {
+  font-size: 1.0625rem;
+  font-weight: 700;
+  color: var(--itam-text);
+}
+
+.itamPanelSubtitle .sapMText,
+.itamPanelSubtitle {
+  font-size: 0.8125rem;
+  color: var(--itam-muted);
+  padding-top: 0.125rem;
+}
+
+.itamPanel .sapMPanelContent {
+  padding: 0;
+  border-bottom: none;
+}
+
+.itamPanelBody {
+  padding: 1rem 1.25rem 1.25rem 1.25rem;
+}
+
+.itamTable .sapMListTblHeaderCell {
+  background: var(--itam-surface-alt);
+  border-bottom: 0.0625rem solid var(--itam-border);
+  padding-top: 0.5rem;
+  padding-bottom: 0.5rem;
+}
+
+.itamTable .sapMListTblHeaderCell .sapMText,
+.itamTable .sapMListTblHeaderCell .sapMLabel {
+  font-size: 0.8125rem;
+  font-weight: 600;
+  color: var(--itam-text);
+}
+
+.itamTable .sapMListTblCell {
+  padding-top: 0.625rem;
+  padding-bottom: 0.625rem;
+  vertical-align: middle;
+}
+
+.itamTable .sapMListTblCell .sapMText,
+.itamTable .sapMListTblCell .sapMLnk {
+  color: var(--itam-text);
+}
+
+.itamTable .sapMListTblRow > td:first-child,
+.itamTable .sapMListTblHeaderCell:first-child {
+  padding-left: 1.25rem;
+}
+
+.itamTable .sapMListTblRow > td:last-child,
+.itamTable .sapMListTblHeaderCell:last-child {
+  padding-right: 1.25rem;
+}
+
+.itamTable .sapMLIB {
+  border-bottom: 0.0625rem solid var(--itam-border);
+}
+
+.itamCellStrong .sapMText,
+.itamCellStrong {
+  font-weight: 600;
+  color: var(--itam-text);
+}
+
+.itamCellMuted .sapMText,
+.itamCellMuted {
+  color: var(--itam-muted);
+  font-size: 0.8125rem;
+}
+
+.itamPill {
+  display: inline-flex;
+  align-items: center;
+  min-height: 1.375rem;
+  max-width: 100%;
+  padding: 0.0625rem 0.5rem;
+  border-radius: 0.6875rem;
+  background: var(--itam-pill-neutral-bg);
+}
+
+.itamPill .sapMObjStatusIcon,
+.itamPill .sapMObjStatusText {
+  padding: 0;
+  line-height: 1.125rem;
+  font-size: 0.75rem;
+  font-weight: 600;
+}
+
+.itamPill.sapMObjStatusSuccess {
+  background: var(--itam-pill-success-bg);
+}
+
+.itamPill.sapMObjStatusSuccess .sapMObjStatusText,
+.itamPill.sapMObjStatusSuccess .sapMObjStatusIcon {
+  color: var(--itam-pill-success-fg);
+}
+
+.itamPill.sapMObjStatusWarning {
+  background: var(--itam-pill-warning-bg);
+}
+
+.itamPill.sapMObjStatusWarning .sapMObjStatusText,
+.itamPill.sapMObjStatusWarning .sapMObjStatusIcon {
+  color: var(--itam-pill-warning-fg);
+}
+
+.itamPill.sapMObjStatusError {
+  background: var(--itam-pill-error-bg);
+}
+
+.itamPill.sapMObjStatusError .sapMObjStatusText,
+.itamPill.sapMObjStatusError .sapMObjStatusIcon {
+  color: var(--itam-pill-error-fg);
+}
+
+.itamPill.sapMObjStatusInformation {
+  background: var(--itam-pill-info-bg);
+}
+
+.itamPill.sapMObjStatusInformation .sapMObjStatusText,
+.itamPill.sapMObjStatusInformation .sapMObjStatusIcon {
+  color: var(--itam-pill-info-fg);
+}
+
+.itamPill.sapMObjStatusNone {
+  background: var(--itam-pill-neutral-bg);
+}
+
+.itamPill.sapMObjStatusNone .sapMObjStatusText,
+.itamPill.sapMObjStatusNone .sapMObjStatusIcon {
+  color: var(--itam-pill-neutral-fg);
+}
+
+.itamTabs .sapMITBHead {
+  margin: 0;
+  padding-left: 0.5rem;
+}
+
+.itamTabs .sapMITBFilter .sapMITBText {
+  font-size: 0.875rem;
+}
+
+.itamPanel .sapMITBContent {
+  padding: 0;
+}
+
+.itamKpiTile {
+  width: 15.5rem;
+  height: 7rem;
+  margin: 0 1rem 1rem 0;
+}
+
+.itamKpiTile .sapMGT {
+  border: 1px solid var(--itam-border);
+  border-radius: 0.75rem;
+  box-shadow: var(--itam-shadow);
+}
+
+.itamKpiValue .sapMNCValue {
+  font-size: 1.75rem;
+}
+
+.itamKpiTile .sapMGTHdrTxt > .sapMText {
+  font-weight: 600;
+}
+
+.itamKpiTile .sapMGTSubHdrTxt {
+  color: var(--itam-muted);
+}
+
+.itamDetailForm .sapMLabel,
+.itamDetailForm .sapMText {
+  font-size: 0.875rem;
+}
+
+.itamDetailForm .sapMLabel {
+  color: var(--itam-muted);
+}
+
+.itamEmpty .sapMText {
+  color: var(--itam-muted);
+}
+
+.itamStickyHeader {
+  position: sticky;
+  top: 0;
+  z-index: 3;
+  background: var(--itam-page-bg);
+}
+
+.itamUserCard {
+  padding: 1.25rem 1.25rem 1rem 1.25rem;
+  gap: 0.25rem;
+}
+
+.itamUserCard .sapFAvatar {
+  margin-bottom: 0.5rem;
+}
+
+.itamUserCardName .sapMTitle,
+.itamUserCardName {
+  font-weight: 700;
+  color: var(--itam-text);
+}
+
+.itamUserPopover .sapMPopoverHeader .sapMText {
+  color: var(--itam-text);
+}
+
+.itamStatsRow {
+  align-items: stretch;
+  gap: 1.5rem;
+  flex-wrap: wrap;
+}
+
+.itamStatsRow > .sapMFlexItem {
+  min-width: 0;
+}
+
+.itamStatsRow > .sapMFlexItem:nth-child(1) {
+  flex: 1 1 22rem !important;
+  max-width: 30rem;
+}
+
+.itamStatsRow > .sapMFlexItem:nth-child(2) {
+  flex: 3 1 30rem !important;
+}
+
+.itamStatsChartCard,
+.itamStatsDetailCard {
+  width: 100% !important;
+}
+
+.itamMultiFilter .sapMMultiComboBox {
+  min-width: 20rem;
+}
+
+.itamDonut {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 0.5rem 1.25rem 1.25rem 1.25rem;
+}
+
+.itamDonutSvg {
+  display: block;
+}
+
+.itamDonutTrack {
+  stroke: var(--itam-surface-alt);
+}
+
+.itamDonutTotal {
+  fill: var(--itam-text);
+  font-size: 2.125rem;
+  font-weight: 700;
+}
+
+.itamDonutCaption {
+  fill: var(--itam-muted);
+  font-size: 0.8125rem;
+}
+
+.itamDonutLegend {
+  list-style: none;
+  margin: 1rem 0 0 0;
+  padding: 0;
+  width: 100%;
+}
+
+.itamDonutLegend li {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.3125rem 0;
+  border-bottom: 0.0625rem solid var(--itam-border);
+}
+
+.itamDonutLegend li:last-child {
+  border-bottom: none;
+}
+
+.itamLegendDot {
+  width: 0.625rem;
+  height: 0.625rem;
+  border-radius: 50%;
+  flex: 0 0 auto;
+}
+
+.itamLegendLabel {
+  flex: 1 1 auto;
+  color: var(--itam-text);
+  font-size: 0.875rem;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.itamLegendValue {
+  color: var(--itam-muted);
+  font-size: 0.8125rem;
+  font-weight: 600;
+  white-space: nowrap;
+}
+
+.itamDonutEmpty {
+  color: var(--itam-muted);
+  font-size: 0.875rem;
+  padding: 3rem 1rem;
+  text-align: center;
+}
+
+.itamEditForm .sapMLabel {
+  color: var(--itam-muted);
+}
+
+.itamModeBadge {
+  display: inline-flex;
+  align-items: center;
+  height: 1.375rem;
+  padding: 0 0.5rem;
+  margin-left: 0.625rem;
+  border-radius: 0.6875rem;
+  background: var(--itam-pill-warning-bg);
+  color: var(--itam-pill-warning-fg);
+  font-size: 0.75rem;
+  font-weight: 600;
+}

@@ -1,0 +1,94 @@
+<mvc:View controllerName="inventory.controller.AssetDetails"
+  xmlns:mvc="sap.ui.core.mvc" xmlns="sap.m" xmlns:core="sap.ui.core">
+
+  <Page showHeader="false" enableScrolling="true" class="itamPage">
+    <content>
+      <VBox class="itamPageContent">
+
+        <core:Fragment fragmentName="common.fragment.PageHeader" type="XML" />
+
+        <Panel class="itamPanel">
+          <headerToolbar>
+            <OverflowToolbar class="itamPanelHeader">
+              <VBox>
+                <Title text="{i18n>assetDetails}" level="H3" class="itamPanelTitle" />
+                <Text text="{category/name}" class="itamPanelSubtitle" />
+              </VBox>
+              <ToolbarSpacer />
+              <ObjectStatus class="itamPill"
+                text="{availabilityStatus/name}"
+                state="{path: 'availabilityStatus/criticality', formatter: '.formatter.critState'}"
+                icon="{path: 'availabilityStatus/criticality', formatter: '.formatter.critIcon'}" />
+              <ObjectStatus class="itamPill"
+                text="{repairStatus/name}"
+                state="{path: 'repairStatus/criticality', formatter: '.formatter.critState'}"
+                icon="{path: 'repairStatus/criticality', formatter: '.formatter.critIcon'}" />
+            </OverflowToolbar>
+          </headerToolbar>
+
+          <IconTabBar class="itamTabs" expanded="true" applyContentPadding="false">
+            <items>
+
+              <IconTabFilter text="{i18n>generalInfo}" key="general">
+                <core:Fragment fragmentName="common.fragment.AssetGeneralForm" type="XML" />
+              </IconTabFilter>
+
+              <IconTabFilter text="{i18n>assignmentHistory}" key="assignments"
+                             count="{ui>/counts/assignmentHistory}">
+                <Table class="itamTable" inset="false" noDataText="{i18n>noData}"
+                       items="{assignmentHistory}">
+                  <columns>
+                    <Column><Text text="{i18n>employee}" /></Column>
+                    <Column><Text text="{i18n>department}" /></Column>
+                    <Column><Text text="{i18n>assignedFrom}" /></Column>
+                    <Column><Text text="{i18n>returnedOn}" /></Column>
+                  </columns>
+                  <items>
+                    <ColumnListItem vAlign="Middle">
+                      <cells>
+                        <Text class="itamCellStrong"
+                              text="{parts: [{path: 'employee/lastName'}, {path: 'employee/firstName'}],
+                                      formatter: '.formatter.fullName'}" />
+                        <Text text="{employee/department}" class="itamCellMuted" />
+                        <Text text="{assignedFrom}" />
+                        <Text text="{returnedOn}" />
+                      </cells>
+                    </ColumnListItem>
+                  </items>
+                </Table>
+              </IconTabFilter>
+
+              <IconTabFilter text="{i18n>repairHistory}" key="repairs"
+                             count="{ui>/counts/repairRequests}">
+                <Table class="itamTable" inset="false" noDataText="{i18n>noData}"
+                       items="{repairRequests}">
+                  <columns>
+                    <Column><Text text="{i18n>description}" /></Column>
+                    <Column><Text text="{i18n>priority}" /></Column>
+                    <Column><Text text="{i18n>status}" /></Column>
+                    <Column><Text text="{i18n>createdDate}" /></Column>
+                  </columns>
+                  <items>
+                    <ColumnListItem vAlign="Middle">
+                      <cells>
+                        <Text text="{description}" maxLines="2" />
+                        <ObjectStatus class="itamPill" text="{priority_code}"
+                          state="{path: 'priority_code', formatter: '.formatter.codeState'}" />
+                        <ObjectStatus class="itamPill" text="{status_code}"
+                          state="{path: 'status_code', formatter: '.formatter.codeState'}"
+                          icon="{path: 'status_code', formatter: '.formatter.codeStateIcon'}" />
+                        <Text text="{createdDate}" class="itamCellMuted" />
+                      </cells>
+                    </ColumnListItem>
+                  </items>
+                </Table>
+              </IconTabFilter>
+
+            </items>
+          </IconTabBar>
+        </Panel>
+
+      </VBox>
+    </content>
+  </Page>
+</mvc:View>

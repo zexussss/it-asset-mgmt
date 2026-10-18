@@ -1,0 +1,94 @@
+<mvc:View controllerName="inventory.controller.EmployeeDetails"
+  xmlns:mvc="sap.ui.core.mvc" xmlns="sap.m" xmlns:core="sap.ui.core"
+  xmlns:form="sap.ui.layout.form">
+
+  <Page showHeader="false" enableScrolling="true" class="itamPage">
+    <content>
+      <VBox class="itamPageContent">
+
+        <core:Fragment fragmentName="common.fragment.PageHeader" type="XML" />
+
+        <Panel class="itamPanel">
+          <headerToolbar>
+            <OverflowToolbar class="itamPanelHeader">
+              <VBox>
+                <HBox alignItems="Center">
+                  <Title text="{i18n>employeeData}" level="H3" class="itamPanelTitle" />
+                  <Text text="{i18n>editMode}" class="itamModeBadge"
+                        visible="{ui>/editMode}" />
+                </HBox>
+                <Text text="{employeeNumber}" class="itamPanelSubtitle" />
+              </VBox>
+            </OverflowToolbar>
+          </headerToolbar>
+          <IconTabBar class="itamTabs" expanded="true" applyContentPadding="false">
+            <items>
+
+              <IconTabFilter text="{i18n>generalInfo}" key="general">
+
+                <form:SimpleForm editable="false" layout="ResponsiveGridLayout"
+                                 columnsXL="2" columnsL="2" columnsM="1"
+                                 visible="{= !${ui>/editMode} }"
+                                 class="itamDetailForm sapUiMediumMargin">
+                  <Label text="{i18n>employeeNumber}" />
+                  <Text text="{employeeNumber}" class="itamCellStrong" />
+                  <Label text="{i18n>firstName}" />
+                  <Text text="{firstName}" />
+                  <Label text="{i18n>lastName}" />
+                  <Text text="{lastName}" />
+                  <Label text="{i18n>email}" />
+                  <Text text="{email}" />
+                  <Label text="{i18n>department}" />
+                  <Text text="{department}" />
+                </form:SimpleForm>
+
+
+                <form:SimpleForm editable="true" layout="ResponsiveGridLayout"
+                                 columnsXL="2" columnsL="2" columnsM="1"
+                                 visible="{ui>/editMode}"
+                                 class="itamEditForm sapUiMediumMargin">
+                  <Label text="{i18n>employeeNumber}" labelFor="invEmpNumber" />
+                  <Input id="invEmpNumber" value="{employeeNumber}" maxLength="20" />
+                  <Label text="{i18n>firstName}" labelFor="invEmpFirst" />
+                  <Input id="invEmpFirst" value="{firstName}" maxLength="50" />
+                  <Label text="{i18n>lastName}" labelFor="invEmpLast" />
+                  <Input id="invEmpLast" value="{lastName}" maxLength="50" />
+                  <Label text="{i18n>email}" labelFor="invEmpMail" />
+                  <Input id="invEmpMail" value="{email}" type="Email" maxLength="100" />
+                  <Label text="{i18n>department}" labelFor="invEmpDept" />
+                  <Input id="invEmpDept" value="{department}" maxLength="50" />
+                </form:SimpleForm>
+              </IconTabFilter>
+
+              <IconTabFilter text="{i18n>assets}" key="assets"
+                             count="{ui>/counts/assets}">
+                <Table class="itamTable" inset="false" noDataText="{i18n>noData}"
+                       items="{assets}">
+                  <columns>
+                    <Column width="9rem"><Text text="{i18n>inventoryNumber}" /></Column>
+                    <Column><Text text="{i18n>name}" /></Column>
+                    <Column><Text text="{i18n>serialNumber}" /></Column>
+                    <Column><Text text="{i18n>warrantyEnd}" /></Column>
+                  </columns>
+                  <items>
+                    <ColumnListItem vAlign="Middle">
+                      <cells>
+                        <Text text="{inventoryNumber}" class="itamCellStrong" />
+                        <Text text="{name}" />
+                        <Text text="{serialNumber}" class="itamCellMuted" />
+                        <Text text="{warrantyEndDate}"
+                              class="itamCellMuted" />
+                      </cells>
+                    </ColumnListItem>
+                  </items>
+                </Table>
+              </IconTabFilter>
+
+            </items>
+          </IconTabBar>
+        </Panel>
+
+      </VBox>
+    </content>
+  </Page>
+</mvc:View>
